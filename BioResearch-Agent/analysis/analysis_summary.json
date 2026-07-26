@@ -1,0 +1,30 @@
+{
+  "status": "completed",
+  "data_type": "bulk",
+  "start_time": "2026-07-27T00:43:38.731330",
+  "end_time": "2026-07-27T00:43:38.731330",
+  "elapsed_seconds": 0.0,
+  "pipelines": [
+    {
+      "step": 1,
+      "module": "DifferentialExpression",
+      "status": "skipped"
+    }
+  ],
+  "summary": {
+    "data_type": "bulk",
+    "steps_total": 1,
+    "steps_success": 0,
+    "steps_failed": 1,
+    "elapsed_seconds": 0.0,
+    "n_genes_input": 10,
+    "n_samples": 6,
+    "de_genes": 0
+  },
+  "visualizations": [],
+  "question": {},
+  "de_summary": null,
+  "go_summary": null,
+  "kegg_summary": null,
+  "survival_summary": null
+}

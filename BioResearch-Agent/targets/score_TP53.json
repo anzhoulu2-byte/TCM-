@@ -1,0 +1,74 @@
+{
+  "gene": "TP53",
+  "total_score": 0.666,
+  "dimensions": {
+    "literature_support": {
+      "score": 0.76,
+      "weight": 0.2,
+      "summary": "150 篇相关文献, 2 个共现关键词"
+    },
+    "expression_foldchange": {
+      "score": 0.62,
+      "weight": 0.15,
+      "summary": "log2FC=2.50, p-adj=5.00e-03"
+    },
+    "functional_importance": {
+      "score": 0.65,
+      "weight": 0.2,
+      "summary": "3 GO terms, 2 pathways, 1 domains"
+    },
+    "druggability": {
+      "score": 0.9,
+      "weight": 0.2,
+      "summary": "Family: kinase, 2 known drugs"
+    },
+    "novelty": {
+      "score": 0.0,
+      "weight": 0.1,
+      "summary": "500 publications, 3 trials, 5 patents"
+    },
+    "safety": {
+      "score": 0.74,
+      "weight": 0.15,
+      "summary": "0 side effects, tissue specificity: 0.80"
+    }
+  },
+  "evidence_chain": [
+    {
+      "dimension": "literature_support",
+      "score": 0.76,
+      "weight": 0.2,
+      "summary": "150 篇相关文献, 2 个共现关键词"
+    },
+    {
+      "dimension": "expression_foldchange",
+      "score": 0.62,
+      "weight": 0.15,
+      "summary": "log2FC=2.50, p-adj=5.00e-03"
+    },
+    {
+      "dimension": "functional_importance",
+      "score": 0.65,
+      "weight": 0.2,
+      "summary": "3 GO terms, 2 pathways, 1 domains"
+    },
+    {
+      "dimension": "druggability",
+      "score": 0.9,
+      "weight": 0.2,
+      "summary": "Family: kinase, 2 known drugs"
+    },
+    {
+      "dimension": "novelty",
+      "score": 0.0,
+      "weight": 0.1,
+      "summary": "500 publications, 3 trials, 5 patents"
+    },
+    {
+      "dimension": "safety",
+      "score": 0.74,
+      "weight": 0.15,
+      "summary": "0 side effects, tissue specificity: 0.80"
+    }
+  ]
+}

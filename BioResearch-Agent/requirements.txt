@@ -1,0 +1,40 @@
+# 核心依赖
+requests>=2.31.0
+httpx>=0.27.0
+aiohttp>=3.14.0
+asyncio>=3.4.3
+
+# 环境配置
+python-dotenv>=1.0.0
+
+# 数据模型与校验
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+
+# 数据处理
+pandas>=2.1.0
+numpy>=1.26.0
+
+# 数据可视化
+matplotlib>=3.8.0
+seaborn>=0.13.0
+
+# 生物信息学
+biopython>=1.83
+scipy>=1.11.0
+gseapy>=1.0.0
+lifelines>=0.27.0
+
+# API 服务
+fastapi>=0.109.0
+uvicorn>=0.27.0
+python-docx>=0.8.11
+
+# 交互界面
+streamlit>=1.31.0
+plotly>=5.18.0
+kaleido>=0.2.1
+openpyxl>=3.1.0
+
+# 日志
+loguru>=0.7.2

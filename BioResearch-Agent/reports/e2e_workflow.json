@@ -1,0 +1,26 @@
+{
+  "workflow_id": "E2E-TEST",
+  "created_at": "2026-07-27T00:43:32.347277",
+  "schema_version": "1.0",
+  "app": {
+    "app_name": "BioResearch-Agent",
+    "app_version": "1.0.0",
+    "python_version": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "workflow_id": "E2E-TEST"
+  },
+  "pipeline": [
+    {
+      "step_id": "STEP-002",
+      "step_name": "e2e_test",
+      "module": "EndToEndTest",
+      "inputs": {
+        "status": "running"
+      },
+      "elapsed_seconds": 0.0,
+      "outputs": {},
+      "requirements": {}
+    }
+  ],
+  "export_format": "BioResearch-Agent Workflow",
+  "description": "Reproducible analysis workflow"
+}

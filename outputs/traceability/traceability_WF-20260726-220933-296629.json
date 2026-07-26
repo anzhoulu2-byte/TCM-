@@ -1,0 +1,181 @@
+{
+  "metadata": {
+    "app_name": "BioResearch-Agent",
+    "app_version": "1.0.0",
+    "python_version": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "workflow_id": "WF-20260726-220933-296629"
+  },
+  "summary": {
+    "workflow_id": "WF-20260726-220933-296629",
+    "total_steps": 7,
+    "total_elapsed_seconds": 9.48,
+    "modules_used": [
+      "TraceabilityTracker",
+      "IntentClassifier",
+      "TaskPlanner",
+      "LiteratureRetriever",
+      "AnalysisOrchestrator",
+      "TargetPrioritizer",
+      "ReportExporter"
+    ],
+    "module_summary": {
+      "TraceabilityTracker": 1,
+      "IntentClassifier": 1,
+      "TaskPlanner": 1,
+      "LiteratureRetriever": 1,
+      "AnalysisOrchestrator": 1,
+      "TargetPrioritizer": 1,
+      "ReportExporter": 1
+    },
+    "first_step": "2026-07-26T22:09:33.528904",
+    "last_step": "2026-07-26T22:09:43.011304"
+  },
+  "workflow_id": "WF-20260726-220933-296629",
+  "generated_at": "2026-07-26T22:09:43.011304",
+  "steps": [
+    {
+      "step_id": "STEP-001",
+      "step_name": "workflow_init",
+      "timestamp": "2026-07-26T22:09:33.528904",
+      "elapsed_from_start": 0.0,
+      "inputs": {
+        "workflow_id": "WF-20260726-220933-296629"
+      },
+      "outputs": {
+        "status": "initialized"
+      },
+      "metadata": {
+        "module": "TraceabilityTracker",
+        "api_version": "",
+        "tool_version": "",
+        "description": "工作流初始化"
+      }
+    },
+    {
+      "step_id": "STEP-002",
+      "step_name": "intent_classification",
+      "timestamp": "2026-07-26T22:09:33.528904",
+      "elapsed_from_start": 0.0,
+      "inputs": {
+        "question": {
+          "disease": "test",
+          "question_type": "mechanism",
+          "description": "test",
+          "keywords": []
+        }
+      },
+      "outputs": {
+        "disease_type": "general",
+        "research_purpose": "literature_review",
+        "data_type_needed": [
+          "literature"
+        ]
+      },
+      "metadata": {
+        "module": "IntentClassifier",
+        "api_version": "",
+        "tool_version": ""
+      }
+    },
+    {
+      "step_id": "STEP-003",
+      "step_name": "task_planning",
+      "timestamp": "2026-07-26T22:09:33.528904",
+      "elapsed_from_start": 0.0,
+      "inputs": {
+        "intent": {
+          "disease_type": "general",
+          "research_purpose": "literature_review",
+          "data_type_needed": [
+            "literature"
+          ]
+        }
+      },
+      "outputs": {
+        "tasks": [
+          "literature_search",
+          "gene_expression_analysis",
+          "target_prioritization",
+          "experimental_protocol_design",
+          "report_generation"
+        ]
+      },
+      "metadata": {
+        "module": "TaskPlanner",
+        "api_version": "",
+        "tool_version": ""
+      }
+    },
+    {
+      "step_id": "STEP-004",
+      "step_name": "literature_search",
+      "timestamp": "2026-07-26T22:09:42.959001",
+      "elapsed_from_start": 9.43,
+      "inputs": {
+        "query": "test"
+      },
+      "outputs": {
+        "literature_count": 50,
+        "gene_count": 0
+      },
+      "metadata": {
+        "module": "LiteratureRetriever",
+        "api_version": "",
+        "tool_version": ""
+      }
+    },
+    {
+      "step_id": "STEP-005",
+      "step_name": "bioinformatics_analysis",
+      "timestamp": "2026-07-26T22:09:42.991320",
+      "elapsed_from_start": 9.462,
+      "inputs": {
+        "data_type": "bulk"
+      },
+      "outputs": {
+        "status": "completed"
+      },
+      "metadata": {
+        "module": "AnalysisOrchestrator",
+        "api_version": "",
+        "tool_version": ""
+      }
+    },
+    {
+      "step_id": "STEP-006",
+      "step_name": "target_prioritization",
+      "timestamp": "2026-07-26T22:09:42.994828",
+      "elapsed_from_start": 9.466,
+      "inputs": {
+        "candidates_count": 0
+      },
+      "outputs": {
+        "top_targets": []
+      },
+      "metadata": {
+        "module": "TargetPrioritizer",
+        "api_version": "",
+        "tool_version": ""
+      }
+    },
+    {
+      "step_id": "STEP-007",
+      "step_name": "report_generation",
+      "timestamp": "2026-07-26T22:09:43.011304",
+      "elapsed_from_start": 9.482,
+      "inputs": {},
+      "outputs": {
+        "exported_files": [
+          "C:\\Users\\Vasuki\\Desktop\\outputs\\reports\\reports\\report_20260726_220942.html",
+          "C:\\Users\\Vasuki\\Desktop\\outputs\\reports\\reports\\report_20260726_220942.json",
+          "C:\\Users\\Vasuki\\Desktop\\outputs\\reports\\reports\\report_20260726_220942_workflow.json"
+        ]
+      },
+      "metadata": {
+        "module": "ReportExporter",
+        "api_version": "",
+        "tool_version": ""
+      }
+    }
+  ]
+}

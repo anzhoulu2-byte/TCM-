@@ -1,0 +1,74 @@
+{
+  "gene": "EGFR",
+  "total_score": 0.55,
+  "dimensions": {
+    "literature_support": {
+      "score": 0.73,
+      "weight": 0.2,
+      "summary": "200 篇相关文献, 1 个共现关键词"
+    },
+    "expression_foldchange": {
+      "score": 0.62,
+      "weight": 0.15,
+      "summary": "log2FC=2.50, p-adj=5.00e-03"
+    },
+    "functional_importance": {
+      "score": 0.25,
+      "weight": 0.2,
+      "summary": "1 GO terms, 1 pathways, 0 domains"
+    },
+    "druggability": {
+      "score": 0.75,
+      "weight": 0.2,
+      "summary": "Family: kinase, 1 known drugs"
+    },
+    "novelty": {
+      "score": 0.0,
+      "weight": 0.1,
+      "summary": "300 publications, 2 trials, 5 patents"
+    },
+    "safety": {
+      "score": 0.74,
+      "weight": 0.15,
+      "summary": "0 side effects, tissue specificity: 0.80"
+    }
+  },
+  "evidence_chain": [
+    {
+      "dimension": "literature_support",
+      "score": 0.73,
+      "weight": 0.2,
+      "summary": "200 篇相关文献, 1 个共现关键词"
+    },
+    {
+      "dimension": "expression_foldchange",
+      "score": 0.62,
+      "weight": 0.15,
+      "summary": "log2FC=2.50, p-adj=5.00e-03"
+    },
+    {
+      "dimension": "functional_importance",
+      "score": 0.25,
+      "weight": 0.2,
+      "summary": "1 GO terms, 1 pathways, 0 domains"
+    },
+    {
+      "dimension": "druggability",
+      "score": 0.75,
+      "weight": 0.2,
+      "summary": "Family: kinase, 1 known drugs"
+    },
+    {
+      "dimension": "novelty",
+      "score": 0.0,
+      "weight": 0.1,
+      "summary": "300 publications, 2 trials, 5 patents"
+    },
+    {
+      "dimension": "safety",
+      "score": 0.74,
+      "weight": 0.15,
+      "summary": "0 side effects, tissue specificity: 0.80"
+    }
+  ]
+}

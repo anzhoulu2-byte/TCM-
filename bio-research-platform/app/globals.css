@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@layer base {
+  * {
+    border-color: #E8E3DC;
+  }
+
+  body {
+    background-color: #FAF7F2;
+    color: #1C1917;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Inter', 'SF Pro Display', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+  }
+  .glass-card:hover {
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.12);
+    background: rgba(255, 255, 255, 0.8);
+    transform: translateY(-2px);
+  }
+
+  .glass-nav {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(24px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: #2D6A4F;
+    color: white;
+    font-weight: 500;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(45, 106, 79, 0.2);
+    transition: all 0.2s ease;
+  }
+  .btn-primary:hover {
+    box-shadow: 0 20px 25px -5px rgba(45, 106, 79, 0.3);
+  }
+  .btn-primary:active {
+    transform: scale(0.98);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #2D6A4F;
+    font-weight: 500;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+    transition: all 0.2s ease;
+  }
+  .btn-secondary:hover {
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.12);
+  }
+  .btn-secondary:active {
+    transform: scale(0.98);
+  }
+
+  .input-glass {
+    width: 100%;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    color: #1C1917;
+    outline: none;
+    transition: all 0.2s ease;
+  }
+  .input-glass:focus {
+    box-shadow: 0 0 0 2px rgba(45, 106, 79, 0.3);
+    border-color: rgba(45, 106, 79, 0.4);
+  }
+  .input-glass::placeholder {
+    color: rgba(107, 114, 128, 0.6);
+  }
+
+  .section-label {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(45, 106, 79, 0.1);
+    color: #2D6A4F;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 9999px;
+    margin-bottom: 16px;
+  }
+
+  .stat-value {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #2D6A4F;
+  }
+  @media (min-width: 768px) {
+    .stat-value { font-size: 3rem; }
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: #6B7280;
+    margin-top: 4px;
+  }
+
+  .hero-blob {
+    position: absolute;
+    border-radius: 9999px;
+    opacity: 0.2;
+    filter: blur(64px);
+  }
+
+  .module-card {
+    composes: glass-card;
+    padding: 24px;
+    cursor: pointer;
+  }
+  @media (min-width: 768px) {
+    .module-card { padding: 32px; }
+  }
+
+  .module-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(45, 106, 79, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2D6A4F;
+    transition: transform 0.3s ease;
+  }
+  .module-card:hover .module-icon {
+    transform: scale(1.1);
+  }
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #2D6A4F40;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2D6A4F80;
+}
+
+/* 选择文本颜色 */
+::selection {
+  background: #2D6A4F30;
+  color: #1B4332;
+}

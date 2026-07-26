@@ -1,0 +1,74 @@
+{
+  "gene": "BRCA1",
+  "total_score": 0.3215,
+  "dimensions": {
+    "literature_support": {
+      "score": 0.0,
+      "weight": 0.2,
+      "summary": "0 篇相关文献"
+    },
+    "expression_foldchange": {
+      "score": 0.56,
+      "weight": 0.15,
+      "summary": "log2FC=2.00, p-adj=5.00e-03"
+    },
+    "functional_importance": {
+      "score": 0.0,
+      "weight": 0.2,
+      "summary": "0 GO terms, 0 pathways, 0 domains"
+    },
+    "druggability": {
+      "score": 0.2,
+      "weight": 0.2,
+      "summary": "Family: unknown"
+    },
+    "novelty": {
+      "score": 1.0,
+      "weight": 0.1,
+      "summary": "0 publications, 0 trials, 0 patents"
+    },
+    "safety": {
+      "score": 0.65,
+      "weight": 0.15,
+      "summary": "0 side effects, tissue specificity: 0.50"
+    }
+  },
+  "evidence_chain": [
+    {
+      "dimension": "literature_support",
+      "score": 0.0,
+      "weight": 0.2,
+      "summary": "0 篇相关文献"
+    },
+    {
+      "dimension": "expression_foldchange",
+      "score": 0.56,
+      "weight": 0.15,
+      "summary": "log2FC=2.00, p-adj=5.00e-03"
+    },
+    {
+      "dimension": "functional_importance",
+      "score": 0.0,
+      "weight": 0.2,
+      "summary": "0 GO terms, 0 pathways, 0 domains"
+    },
+    {
+      "dimension": "druggability",
+      "score": 0.2,
+      "weight": 0.2,
+      "summary": "Family: unknown"
+    },
+    {
+      "dimension": "novelty",
+      "score": 1.0,
+      "weight": 0.1,
+      "summary": "0 publications, 0 trials, 0 patents"
+    },
+    {
+      "dimension": "safety",
+      "score": 0.65,
+      "weight": 0.15,
+      "summary": "0 side effects, tissue specificity: 0.50"
+    }
+  ]
+}

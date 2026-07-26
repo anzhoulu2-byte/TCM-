@@ -1,0 +1,1129 @@
+{
+  "question": {
+    "disease": "test",
+    "question_type": "mechanism",
+    "description": "test",
+    "keywords": []
+  },
+  "intent": {
+    "disease_type": "general",
+    "research_purpose": "literature_review",
+    "data_type_needed": [
+      "literature"
+    ]
+  },
+  "tasks": [
+    "literature_search",
+    "gene_expression_analysis",
+    "target_prioritization",
+    "experimental_protocol_design",
+    "report_generation"
+  ],
+  "literature": [
+    {
+      "pmid": "38583268",
+      "title": "Frontiers in sarcopenia: Advancements in diagnostics, molecular mechanisms, and therapeutic strategies.",
+      "abstract": "",
+      "authors": [
+        "Liu D",
+        "Wang S",
+        "Liu S",
+        "Wang Q",
+        "Che X",
+        "Wu G"
+      ],
+      "journal": "Mol Aspects Med",
+      "year": 2024,
+      "doi": "10.1016/j.mam.2024.101270"
+    },
+    {
+      "pmid": "40102948",
+      "title": "Inhibition of neutrophil extracellular traps alleviates blood-brain barrier disruption and cognitive dysfunction via Wnt3/β-catenin/TCF4 signaling in sepsis-associated encephalopathy.",
+      "abstract": "",
+      "authors": [
+        "Yue J",
+        "Mo L",
+        "Zeng G",
+        "Ma P",
+        "Zhang X",
+        "Peng Y",
+        "Zhang X",
+        "Zhou Y",
+        "Jiang Y",
+        "Huang N",
+        "Cheng Y"
+      ],
+      "journal": "J Neuroinflammation",
+      "year": 2025,
+      "doi": "10.1186/s12974-025-03395-6"
+    },
+    {
+      "pmid": "36461606",
+      "title": "Fluoxetine shows neuroprotective effects against LPS-induced neuroinflammation via the Notch signaling pathway.",
+      "abstract": "",
+      "authors": [
+        "Zhang J",
+        "Zhang N",
+        "Lei J",
+        "Jing B",
+        "Li M",
+        "Tian H",
+        "Xue B",
+        "Li X"
+      ],
+      "journal": "Int Immunopharmacol",
+      "year": 2022,
+      "doi": "10.1016/j.intimp.2022.109417"
+    },
+    {
+      "pmid": "38417575",
+      "title": "Salidroside promotes pro-angiogenesis and repair of blood brain barrier via Notch/ITGB1 signal path in CSVD Model.",
+      "abstract": "",
+      "authors": [
+        "Zhilan T",
+        "Zengyu Z",
+        "Pengpeng J",
+        "Hualan Y",
+        "Chao L",
+        "Yan X",
+        "Zimin G",
+        "Shuangxing H",
+        "Weiwei L"
+      ],
+      "journal": "J Adv Res",
+      "year": 2025,
+      "doi": "10.1016/j.jare.2024.02.019"
+    },
+    {
+      "pmid": "34915154",
+      "title": "TNF signaling pathway-mediated microglial activation in the PFC underlies acute paradoxical sleep deprivation-induced anxiety-like behaviors in mice.",
+      "abstract": "",
+      "authors": [
+        "Liu H",
+        "Huang X",
+        "Li Y",
+        "Xi K",
+        "Han Y",
+        "Mao H",
+        "Ren K",
+        "Wang W",
+        "Wu Z"
+      ],
+      "journal": "Brain Behav Immun",
+      "year": 2022,
+      "doi": "10.1016/j.bbi.2021.12.006"
+    },
+    {
+      "pmid": "40301912",
+      "title": "Repurposing of epalrestat for neuroprotection in parkinson's disease via activation of the KEAP1/Nrf2 pathway.",
+      "abstract": "",
+      "authors": [
+        "Jia H",
+        "Liu M",
+        "Jiang H",
+        "Qiao Z",
+        "Ren K",
+        "Du X",
+        "Chen X",
+        "Jiao Q",
+        "Che F"
+      ],
+      "journal": "J Neuroinflammation",
+      "year": 2025,
+      "doi": "10.1186/s12974-025-03455-x"
+    },
+    {
+      "pmid": "28256574",
+      "title": "Tissue-specific tumorigenesis: context matters.",
+      "abstract": "",
+      "authors": [
+        "Schneider G",
+        "Schmidt-Supprian M",
+        "Rad R",
+        "Saur D"
+      ],
+      "journal": "Nat Rev Cancer",
+      "year": 2017,
+      "doi": "10.1038/nrc.2017.5"
+    },
+    {
+      "pmid": "41067203",
+      "title": "Mechanism and potential targets of kaempferol alleviating photothrombotic stroke via integrating experimental validation, network pharmacology, and molecular docking.",
+      "abstract": "",
+      "authors": [
+        "Liu M",
+        "Liu DN",
+        "Shang YF",
+        "Zhang WF",
+        "Feng WD",
+        "Fang LH",
+        "Du GH",
+        "Wang YH"
+      ],
+      "journal": "Phytomedicine",
+      "year": 2025,
+      "doi": "10.1016/j.phymed.2025.157354"
+    },
+    {
+      "pmid": "39418730",
+      "title": "S100A8 knockdown activates the PI3K/AKT signaling pathway to inhibit microglial autophagy and improve cognitive impairment mediated by chronic sleep deprivation.",
+      "abstract": "",
+      "authors": [
+        "Xiong Y",
+        "Liang W",
+        "Wang X",
+        "Zhu H",
+        "Yi P",
+        "Wei G",
+        "Liu H",
+        "Lin Y",
+        "Zhang L",
+        "Ying J",
+        "Hua F"
+      ],
+      "journal": "Int Immunopharmacol",
+      "year": 2024,
+      "doi": "10.1016/j.intimp.2024.113375"
+    },
+    {
+      "pmid": "28833194",
+      "title": "Mechanobiology of limb musculoskeletal development.",
+      "abstract": "",
+      "authors": [
+        "Arvind V",
+        "Huang AH"
+      ],
+      "journal": "Ann N Y Acad Sci",
+      "year": 2017,
+      "doi": "10.1111/nyas.13427"
+    },
+    {
+      "pmid": "25052910",
+      "title": "Phytohormone regulation of legume-rhizobia interactions.",
+      "abstract": "",
+      "authors": [
+        "Ferguson BJ",
+        "Mathesius U"
+      ],
+      "journal": "J Chem Ecol",
+      "year": 2014,
+      "doi": "10.1007/s10886-014-0472-7"
+    },
+    {
+      "pmid": "40047153",
+      "title": "DNLA Delayed the Appearance of Learning and Memory Impairment of APP/PS1 Mice: Involvement of mTOR/TFEB/v-ATPase Signaling Pathway.",
+      "abstract": "",
+      "authors": [
+        "Wu Y",
+        "Liu X",
+        "Luo G",
+        "Li Q",
+        "Guo B",
+        "Li L",
+        "Nie J"
+      ],
+      "journal": "CNS Neurosci Ther",
+      "year": 2025,
+      "doi": "10.1111/cns.70300"
+    },
+    {
+      "pmid": "30468479",
+      "title": "Molecular mechanism for P38 signaling pathway in autophagy of skin cancer cell line HS-1.",
+      "abstract": "",
+      "authors": [
+        "Zhou W",
+        "Zhou L",
+        "Wang M",
+        "Chen DY",
+        "Liu ZM",
+        "Ye L",
+        "Guo L"
+      ],
+      "journal": "Eur Rev Med Pharmacol Sci",
+      "year": 2018,
+      "doi": "10.26355/eurrev_201811_16271"
+    },
+    {
+      "pmid": "41465535",
+      "title": "Molecular Signatures of Early-Onset Bipolar Disorder and Schizophrenia: Transcriptomic and Machine-Learning Insights into Calcium and cAMP Signaling, Including Sex-Specific Patterns.",
+      "abstract": "",
+      "authors": [
+        "Afjeh SS",
+        "Dey S",
+        "Kiss D",
+        "Sanches M",
+        "Dos Santos F",
+        "Pouget JG",
+        "Akbarian N",
+        "Tripathy S",
+        "Gonçalves VF",
+        "Kennedy JL"
+      ],
+      "journal": "Int J Mol Sci",
+      "year": 2025,
+      "doi": "10.3390/ijms262412109"
+    },
+    {
+      "pmid": "39530490",
+      "title": "Impaired oxytocin signalling in the central amygdala in rats with chronic heart failure.",
+      "abstract": "",
+      "authors": [
+        "Althammer F",
+        "Roy RK",
+        "Kirchner MK",
+        "Lira EC",
+        "Schimmer S",
+        "Charlet A",
+        "Grinevich V",
+        "Stern JE"
+      ],
+      "journal": "J Physiol",
+      "year": 2024,
+      "doi": "10.1113/JP286297"
+    },
+    {
+      "pmid": "33497736",
+      "title": "Network pharmacology and molecular docking reveal the mechanism of Scopoletin against non-small cell lung cancer.",
+      "abstract": "",
+      "authors": [
+        "Yuan C",
+        "Wang MH",
+        "Wang F",
+        "Chen PY",
+        "Ke XG",
+        "Yu B",
+        "Yang YF",
+        "You PT",
+        "Wu HZ"
+      ],
+      "journal": "Life Sci",
+      "year": 2021,
+      "doi": "10.1016/j.lfs.2021.119105"
+    },
+    {
+      "pmid": "28286901",
+      "title": "The effects of microRNAs on glucocorticoid responsiveness.",
+      "abstract": "",
+      "authors": [
+        "Wang H",
+        "Gou X",
+        "Jiang T",
+        "Ouyang J"
+      ],
+      "journal": "J Cancer Res Clin Oncol",
+      "year": 2017,
+      "doi": "10.1007/s00432-017-2388-4"
+    },
+    {
+      "pmid": "37102991",
+      "title": "Molecular mechanisms of Chengshi Beixie Fenqing Decoction based on network pharmacology: pivotal roles of relaxin signaling pathway and its associated target proteins against Benign prostatic hyperplasia.",
+      "abstract": "",
+      "authors": [
+        "Yan BH",
+        "Xu QX",
+        "Ge X",
+        "Gao MT",
+        "Li Y",
+        "Guo L",
+        "Hu P",
+        "Pan Y"
+      ],
+      "journal": "J Biomol Struct Dyn",
+      "year": 2024,
+      "doi": "10.1080/07391102.2023.2203237"
+    },
+    {
+      "pmid": "18580040",
+      "title": "Molecular and cellular mechanisms for differentiation and regeneration of the uterine endometrium.",
+      "abstract": "",
+      "authors": [
+        "Maruyama T",
+        "Yoshimura Y"
+      ],
+      "journal": "Endocr J",
+      "year": 2008,
+      "doi": "10.1507/endocrj.k08e-067"
+    },
+    {
+      "pmid": "39328008",
+      "title": "Vitamin D(3) Attenuates Neuropathic Pain via Suppression of Mitochondria-Associated Ferroptosis by Inhibiting PKCα/NOX4 Signaling Pathway.",
+      "abstract": "",
+      "authors": [
+        "Zhang W",
+        "Yu S",
+        "Jiao B",
+        "Zhang C",
+        "Zhang K",
+        "Liu B",
+        "Zhang X"
+      ],
+      "journal": "CNS Neurosci Ther",
+      "year": 2024,
+      "doi": "10.1111/cns.70067"
+    },
+    {
+      "pmid": "39725365",
+      "title": "Xiaoxuming decoction enhanced neuroprotection after cerebral ischemia/reperfusion via the JAK2/STAT3 signaling pathway based on UPLC/HRMS, network pharmacology and experimental validation.",
+      "abstract": "",
+      "authors": [
+        "Wang M",
+        "Zhang Y",
+        "Fu X",
+        "Zou X",
+        "Xiang J",
+        "Lan R"
+      ],
+      "journal": "J Ethnopharmacol",
+      "year": 2025,
+      "doi": "10.1016/j.jep.2024.119279"
+    },
+    {
+      "pmid": "41085788",
+      "title": "SOCS2 alleviates traumatic brain injury-induced mitochondrial damage and parthanatos in endothelial cells by inhibiting the JAK2/STAT3 signaling pathway.",
+      "abstract": "",
+      "authors": [
+        "Zhang H",
+        "Gui Y",
+        "Che W",
+        "Deng S",
+        "Yang L"
+      ],
+      "journal": "Metab Brain Dis",
+      "year": 2025,
+      "doi": "10.1007/s11011-025-01724-5"
+    },
+    {
+      "pmid": "37844745",
+      "title": "Saikosaponin a activates tet1/dll3/notch1 signalling and promotes hippocampal neurogenesis to improve depression-like behavior in mice.",
+      "abstract": "",
+      "authors": [
+        "Tong Y",
+        "Zhao G",
+        "Shuang R",
+        "Wang H",
+        "Zeng N"
+      ],
+      "journal": "J Ethnopharmacol",
+      "year": 2024,
+      "doi": "10.1016/j.jep.2023.117289"
+    },
+    {
+      "pmid": "40393245",
+      "title": "Evodiamine inhibits NLRP3 inflammasome-mediated microglial pyroptosis and promotes remyelination via SLC2A4-regulated autophagy.",
+      "abstract": "",
+      "authors": [
+        "Zhao Y",
+        "Sun X",
+        "Shao F",
+        "Li L",
+        "Xiao W",
+        "Gu C",
+        "Zhang Y",
+        "Jia Y",
+        "Dai L",
+        "Li H",
+        "Bao H"
+      ],
+      "journal": "Phytomedicine",
+      "year": 2025,
+      "doi": "10.1016/j.phymed.2025.156866"
+    },
+    {
+      "pmid": "36915717",
+      "title": "IFN-α-2b Reduces Postoperative Arthrofibrosis in Rats by Inhibiting Fibroblast Proliferation and Migration through STAT1/p21 Signaling Pathway.",
+      "abstract": "",
+      "authors": [
+        "Liu Z",
+        "Fan Z",
+        "Wang R",
+        "Li X",
+        "Chen H",
+        "Wang J"
+      ],
+      "journal": "Mediators Inflamm",
+      "year": 2023,
+      "doi": "10.1155/2023/1699946"
+    },
+    {
+      "pmid": "40836407",
+      "title": "Ginsenoside Rd alleviates LPS-induced neuroinflammation and depressive-like behaviors via regulating TLR4-PI3K-NF-κB-JMJD3 signaling.",
+      "abstract": "",
+      "authors": [
+        "Chen H",
+        "Piao J",
+        "Geng Z",
+        "Han X",
+        "Li R",
+        "Cui R",
+        "Li B"
+      ],
+      "journal": "Int Immunopharmacol",
+      "year": 2025,
+      "doi": "10.1016/j.intimp.2025.115071"
+    },
+    {
+      "pmid": "38044138",
+      "title": "Porcine Acellular Dermal Matrix Promotes Migration and Suppresses Inflammation of Keratinocytes by Mediating the AKT Signaling Pathway.",
+      "abstract": "",
+      "authors": [
+        "He X",
+        "Li D",
+        "Chen T"
+      ],
+      "journal": "Chem Pharm Bull (Tokyo)",
+      "year": 2023,
+      "doi": "10.1248/cpb.c23-00379"
+    },
+    {
+      "pmid": "30247877",
+      "title": "Alpha-7 Nicotinic Receptor-Targeted Cinobufagin Induces Antinociception and Inhibits NF-κB Signaling Pathway in DRG Neurons.",
+      "abstract": "",
+      "authors": [
+        "Xu L",
+        "Zhang X",
+        "Feng Q",
+        "Zheng Y",
+        "Ni H",
+        "Shen H",
+        "Yao M"
+      ],
+      "journal": "ACS Chem Neurosci",
+      "year": 2019,
+      "doi": "10.1021/acschemneuro.8b00369"
+    },
+    {
+      "pmid": "40318303",
+      "title": "TJ0113-induced mitophagy in acute liver failure detected by Raman microspectroscopy.",
+      "abstract": "",
+      "authors": [
+        "Huang C",
+        "Liao J",
+        "Cen X",
+        "Jiao C",
+        "Chen S",
+        "Liu D",
+        "Qu HS",
+        "Zhu J",
+        "He S"
+      ],
+      "journal": "Redox Biol",
+      "year": 2025,
+      "doi": "10.1016/j.redox.2025.103654"
+    },
+    {
+      "pmid": "37147960",
+      "title": "Potentiated action on the progression of OSMF by hypoxia mediated signaling pathway by the epithelial mesenchymal transition and angiogenic apparatus.",
+      "abstract": "",
+      "authors": [
+        "Gupta S",
+        "Shetty DC",
+        "Gulati N",
+        "Juneja S",
+        "Jain A"
+      ],
+      "journal": "J Cancer Res Ther",
+      "year": 2023,
+      "doi": "10.4103/jcrt.jcrt_502_21"
+    },
+    {
+      "pmid": "38006805",
+      "title": "Morroniside improves the symptoms of post-stroke depression in mice through the BDNF signaling pathway mediated by MiR-409-3p.",
+      "abstract": "",
+      "authors": [
+        "Qian L",
+        "Huang S",
+        "Liu X",
+        "Jiang Y",
+        "Jiang Y",
+        "Hu Y",
+        "Yang Z"
+      ],
+      "journal": "Phytomedicine",
+      "year": 2024,
+      "doi": "10.1016/j.phymed.2023.155224"
+    },
+    {
+      "pmid": "38267744",
+      "title": "Two Prenylated Chalcones, 4-Hydroxyderricin, and Xanthoangelol Prevent Postprandial Hyperglycemia by Promoting GLUT4 Translocation via the LKB1/AMPK Signaling Pathway in Skeletal Muscle Cells.",
+      "abstract": "",
+      "authors": [
+        "Odongo K",
+        "Abe A",
+        "Kawasaki R",
+        "Kawabata K",
+        "Ashida H"
+      ],
+      "journal": "Mol Nutr Food Res",
+      "year": 2024,
+      "doi": "10.1002/mnfr.202300538"
+    },
+    {
+      "pmid": "38040238",
+      "title": "Effects of trichlorobisphenol A on the expression of proteins and genes associated with puberty initiation in GT1-7 cells and the relevant molecular mechanism.",
+      "abstract": "",
+      "authors": [
+        "Yang Y",
+        "Xu L",
+        "Lei B",
+        "Huang Y",
+        "Yu M"
+      ],
+      "journal": "Food Chem Toxicol",
+      "year": 2024,
+      "doi": "10.1016/j.fct.2023.114258"
+    },
+    {
+      "pmid": "39708240",
+      "title": "Memantine/Rosuvastatin Therapy Abrogates Cognitive and Hippocampal Injury in an Experimental Model of Alzheimer's Disease in Rats: Role of TGF-β1/Smad Signaling Pathway and Amyloid-β Clearance.",
+      "abstract": "",
+      "authors": [
+        "Zidan EF",
+        "El-Mezayen NS",
+        "Elrewini SH",
+        "Afify EA",
+        "Ali MA"
+      ],
+      "journal": "J Neuroimmune Pharmacol",
+      "year": 2024,
+      "doi": "10.1007/s11481-024-10159-1"
+    },
+    {
+      "pmid": "36739316",
+      "title": "Exploring the mechanism of Chaihujia Longgu Muli decoction in the treatment of epilepsy in rats based on the RhoA/ROCK signaling pathway.",
+      "abstract": "",
+      "authors": [
+        "Feng G",
+        "Liu X",
+        "Wang B",
+        "Li R",
+        "Chang Y",
+        "Guo N",
+        "Li Y",
+        "Chen T",
+        "Ma B"
+      ],
+      "journal": "Mol Biol Rep",
+      "year": 2023,
+      "doi": "10.1007/s11033-023-08301-y"
+    },
+    {
+      "pmid": "39166408",
+      "title": "Electroacupuncture attenuates depressive-like behaviors in poststroke depression mice through promoting hippocampal neurogenesis and inhibiting TLR4/NF-κB/NLRP3 signaling pathway.",
+      "abstract": "",
+      "authors": [
+        "Li M",
+        "Yang F",
+        "Zhang X",
+        "Yang H",
+        "He X",
+        "Mao Z",
+        "Mao L"
+      ],
+      "journal": "Neuroreport",
+      "year": 2024,
+      "doi": "10.1097/WNR.0000000000002088"
+    },
+    {
+      "pmid": "34332921",
+      "title": "Antidepressant mechanism of catalpol: Involvement of the PI3K/Akt/Nrf2/HO-1 signaling pathway in rat hippocampus.",
+      "abstract": "",
+      "authors": [
+        "Wang J",
+        "Chen R",
+        "Liu C",
+        "Wu X",
+        "Zhang Y"
+      ],
+      "journal": "Eur J Pharmacol",
+      "year": 2021,
+      "doi": "10.1016/j.ejphar.2021.174396"
+    },
+    {
+      "pmid": "27658959",
+      "title": "Prolactin receptor in breast cancer: marker for metastatic risk.",
+      "abstract": "",
+      "authors": [
+        "Shemanko CS"
+      ],
+      "journal": "J Mol Endocrinol",
+      "year": 2016,
+      "doi": "10.1530/JME-16-0150"
+    },
+    {
+      "pmid": "40140922",
+      "title": "Exosome-transmitted HSPA9 facilitates bortezomib resistance by targeting TRIP13/USP1 signaling in multiple myeloma.",
+      "abstract": "",
+      "authors": [
+        "Shi M",
+        "Shen N",
+        "Liu X",
+        "Yu J",
+        "Shen X",
+        "Chen Y",
+        "Xia Y",
+        "Chen L"
+      ],
+      "journal": "Cell Commun Signal",
+      "year": 2025,
+      "doi": "10.1186/s12964-025-02158-3"
+    },
+    {
+      "pmid": "27256815",
+      "title": "Divergence and Conservation of the Major UPR Branch IRE1-bZIP Signaling Pathway across Eukaryotes.",
+      "abstract": "",
+      "authors": [
+        "Zhang L",
+        "Zhang C",
+        "Wang A"
+      ],
+      "journal": "Sci Rep",
+      "year": 2016,
+      "doi": "10.1038/srep27362"
+    },
+    {
+      "pmid": "40527439",
+      "title": "The Scribble-Rac1 signaling axis drives epithelial cell motility and contributes to diffuse adenomyosis pathogenesis.",
+      "abstract": "",
+      "authors": [
+        "He X",
+        "Peng Y",
+        "Liu H",
+        "Xu C"
+      ],
+      "journal": "Exp Cell Res",
+      "year": 2025,
+      "doi": "10.1016/j.yexcr.2025.114654"
+    },
+    {
+      "pmid": "41453902",
+      "title": "Butin inhibits osteoarthritis progression by modulating the Nrf2/HO-1 signaling pathway and inhibiting NF-κB signaling.",
+      "abstract": "",
+      "authors": [
+        "Zhou P",
+        "Chang J",
+        "Wei X",
+        "Zhu C",
+        "Yang J",
+        "Wang C",
+        "Hu Y",
+        "Zhang C"
+      ],
+      "journal": "Sci Rep",
+      "year": 2025,
+      "doi": "10.1038/s41598-025-26243-2"
+    },
+    {
+      "pmid": "40582902",
+      "title": "PIMREG modulation of PI3K/Akt pathway enhances sorafenib resistance in Huh7 cells.",
+      "abstract": "",
+      "authors": [
+        "Zhang L",
+        "Gao A",
+        "Peng K"
+      ],
+      "journal": "Arab J Gastroenterol",
+      "year": 2025,
+      "doi": "10.1016/j.ajg.2025.05.002"
+    },
+    {
+      "pmid": "40156005",
+      "title": "Harmine alleviates LPS-induced acute lung injury by inhibiting CSF3-mediated MAPK/NF-κB signaling pathway.",
+      "abstract": "",
+      "authors": [
+        "Zhai Y",
+        "Chen K",
+        "Xu Z",
+        "Chen X",
+        "Tong J",
+        "He Y",
+        "Chen C",
+        "Ding M",
+        "Liang G",
+        "Zheng X"
+      ],
+      "journal": "Respir Res",
+      "year": 2025,
+      "doi": "10.1186/s12931-025-03196-8"
+    },
+    {
+      "pmid": "40311718",
+      "title": "Agrimonia pilosa Extract suppresses NSCLC growth through regulating PI3K/AKT/Bcl-2 pathway.",
+      "abstract": "",
+      "authors": [
+        "Tong ZH",
+        "Guo WJ",
+        "Xu YJ",
+        "Zhang Y",
+        "Wang WF"
+      ],
+      "journal": "J Ethnopharmacol",
+      "year": 2025,
+      "doi": "10.1016/j.jep.2025.119892"
+    },
+    {
+      "pmid": "41224086",
+      "title": "Xingshen Jieyu Decoction ameliorates post-stroke depression by modulating proBDNF/BDNF signaling via PI3K/Akt pathway.",
+      "abstract": "",
+      "authors": [
+        "Chen X",
+        "Zhao W",
+        "Hou Z",
+        "Zhu J",
+        "Ren Z",
+        "Li L",
+        "Wang H",
+        "Yang Y",
+        "Lou Y",
+        "Song H",
+        "Zhu Y",
+        "Han Z"
+      ],
+      "journal": "J Ethnopharmacol",
+      "year": 2026,
+      "doi": "10.1016/j.jep.2025.120884"
+    },
+    {
+      "pmid": "41005470",
+      "title": "Atractylenolide III alleviates inflammation in cerebral ischemia/reperfusion injury by modulating the PI3K/Akt/NF-κB signaling pathway.",
+      "abstract": "",
+      "authors": [
+        "Mao M",
+        "Shentu C",
+        "Chen X",
+        "Meng Q",
+        "Jiao Z",
+        "Zhang Y",
+        "Zhu N",
+        "Zhou L",
+        "Wu Y",
+        "Dai S",
+        "Yuan X"
+      ],
+      "journal": "J Ethnopharmacol",
+      "year": 2026,
+      "doi": "10.1016/j.jep.2025.120644"
+    },
+    {
+      "pmid": "34984715",
+      "title": "How is auxin linked with cellular energy pathways to promote growth?",
+      "abstract": "",
+      "authors": [
+        "Tivendale ND",
+        "Millar AH"
+      ],
+      "journal": "New Phytol",
+      "year": 2022,
+      "doi": "10.1111/nph.17946"
+    },
+    {
+      "pmid": "33577398",
+      "title": "PINK1 Inhibits Multimeric Aggregation and Signaling of MAVS and MAVS-Dependent Lung Pathology.",
+      "abstract": "",
+      "authors": [
+        "Kim SH",
+        "Shin HJ",
+        "Yoon CM",
+        "Lee SW",
+        "Sharma L",
+        "Dela Cruz CS",
+        "Kang MJ"
+      ],
+      "journal": "Am J Respir Cell Mol Biol",
+      "year": 2021,
+      "doi": "10.1165/rcmb.2020-0490OC"
+    },
+    {
+      "pmid": "30471098",
+      "title": "Effects of FOSL1 silencing on osteosarcoma cell proliferation, invasion and migration through the ERK/AP-1 signaling pathway.",
+      "abstract": "",
+      "authors": [
+        "Han Y",
+        "Zhao X",
+        "Sun Y",
+        "Sui Y",
+        "Liu J"
+      ],
+      "journal": "J Cell Physiol",
+      "year": 2019,
+      "doi": "10.1002/jcp.27048"
+    }
+  ],
+  "associated_genes": [],
+  "differential_expression": {
+    "status": "completed",
+    "start_time": "2026-07-26T22:09:42.967320",
+    "data_type": "bulk",
+    "differential_expression": {
+      "results": "Empty DataFrame\nColumns: []\nIndex: []",
+      "significant": [],
+      "gene_results": [],
+      "summary": {
+        "total_genes_tested": 0,
+        "significant_genes": 0,
+        "upregulated": 0,
+        "downregulated": 0,
+        "error": "expression_data 列名与 metadata 索引无交集"
+      },
+      "parameters": {},
+      "output_files": {}
+    },
+    "enrichment_go": null,
+    "enrichment_kegg": null,
+    "survival": {
+      "kaplan_meier": {},
+      "cox_regression": {
+        "km_high": null,
+        "km_low": null,
+        "cox_model": null,
+        "logrank_result": {
+          "test_statistic": 0,
+          "pvalue": 1.0
+        },
+        "results": "Empty DataFrame\nColumns: []\nIndex: []",
+        "summary": {
+          "error": "lifelines 未安装"
+        },
+        "output_files": {}
+      }
+    },
+    "visualizations": {
+      "volcano": "figures/volcano.png"
+    },
+    "summary": {
+      "data_type": "bulk",
+      "steps_total": 4,
+      "steps_success": 2,
+      "steps_failed": 2,
+      "elapsed_seconds": 0.02,
+      "n_genes_input": 0,
+      "n_samples": 0,
+      "de_genes": 0
+    },
+    "pipelines": [
+      {
+        "step": 1,
+        "module": "DifferentialExpression",
+        "status": "success",
+        "summary": {
+          "total_genes_tested": 0,
+          "significant_genes": 0,
+          "upregulated": 0,
+          "downregulated": 0,
+          "error": "expression_data 列名与 metadata 索引无交集"
+        }
+      },
+      {
+        "step": 2,
+        "module": "GO Enrichment",
+        "status": "skipped"
+      },
+      {
+        "step": 3,
+        "module": "KEGG Enrichment",
+        "status": "skipped"
+      },
+      {
+        "step": 4,
+        "module": "Survival Analysis",
+        "status": "success",
+        "n_genes_km": 0
+      }
+    ],
+    "question": {
+      "disease": "test",
+      "question_type": "mechanism",
+      "description": "test",
+      "keywords": []
+    },
+    "end_time": "2026-07-26T22:09:42.991320",
+    "elapsed_seconds": 0.02
+  },
+  "targets": [],
+  "protocol": {},
+  "visualizations": {
+    "volcano": "figures/volcano.png"
+  },
+  "traceability": {
+    "metadata": {
+      "app_name": "BioResearch-Agent",
+      "app_version": "1.0.0",
+      "python_version": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+      "workflow_id": "WF-20260726-220933-296629"
+    },
+    "summary": {
+      "workflow_id": "WF-20260726-220933-296629",
+      "total_steps": 6,
+      "total_elapsed_seconds": 9.47,
+      "modules_used": [
+        "TraceabilityTracker",
+        "IntentClassifier",
+        "TaskPlanner",
+        "LiteratureRetriever",
+        "AnalysisOrchestrator",
+        "TargetPrioritizer"
+      ],
+      "module_summary": {
+        "TraceabilityTracker": 1,
+        "IntentClassifier": 1,
+        "TaskPlanner": 1,
+        "LiteratureRetriever": 1,
+        "AnalysisOrchestrator": 1,
+        "TargetPrioritizer": 1
+      },
+      "first_step": "2026-07-26T22:09:33.528904",
+      "last_step": "2026-07-26T22:09:42.994828"
+    },
+    "workflow_id": "WF-20260726-220933-296629",
+    "generated_at": "2026-07-26T22:09:42.994828",
+    "steps": [
+      {
+        "step_id": "STEP-001",
+        "step_name": "workflow_init",
+        "timestamp": "2026-07-26T22:09:33.528904",
+        "elapsed_from_start": 0.0,
+        "inputs": {
+          "workflow_id": "WF-20260726-220933-296629"
+        },
+        "outputs": {
+          "status": "initialized"
+        },
+        "metadata": {
+          "module": "TraceabilityTracker",
+          "api_version": "",
+          "tool_version": "",
+          "description": "工作流初始化"
+        }
+      },
+      {
+        "step_id": "STEP-002",
+        "step_name": "intent_classification",
+        "timestamp": "2026-07-26T22:09:33.528904",
+        "elapsed_from_start": 0.0,
+        "inputs": {
+          "question": {
+            "disease": "test",
+            "question_type": "mechanism",
+            "description": "test",
+            "keywords": []
+          }
+        },
+        "outputs": {
+          "disease_type": "general",
+          "research_purpose": "literature_review",
+          "data_type_needed": [
+            "literature"
+          ]
+        },
+        "metadata": {
+          "module": "IntentClassifier",
+          "api_version": "",
+          "tool_version": ""
+        }
+      },
+      {
+        "step_id": "STEP-003",
+        "step_name": "task_planning",
+        "timestamp": "2026-07-26T22:09:33.528904",
+        "elapsed_from_start": 0.0,
+        "inputs": {
+          "intent": {
+            "disease_type": "general",
+            "research_purpose": "literature_review",
+            "data_type_needed": [
+              "literature"
+            ]
+          }
+        },
+        "outputs": {
+          "tasks": [
+            "literature_search",
+            "gene_expression_analysis",
+            "target_prioritization",
+            "experimental_protocol_design",
+            "report_generation"
+          ]
+        },
+        "metadata": {
+          "module": "TaskPlanner",
+          "api_version": "",
+          "tool_version": ""
+        }
+      },
+      {
+        "step_id": "STEP-004",
+        "step_name": "literature_search",
+        "timestamp": "2026-07-26T22:09:42.959001",
+        "elapsed_from_start": 9.43,
+        "inputs": {
+          "query": "test"
+        },
+        "outputs": {
+          "literature_count": 50,
+          "gene_count": 0
+        },
+        "metadata": {
+          "module": "LiteratureRetriever",
+          "api_version": "",
+          "tool_version": ""
+        }
+      },
+      {
+        "step_id": "STEP-005",
+        "step_name": "bioinformatics_analysis",
+        "timestamp": "2026-07-26T22:09:42.991320",
+        "elapsed_from_start": 9.462,
+        "inputs": {
+          "data_type": "bulk"
+        },
+        "outputs": {
+          "status": "completed"
+        },
+        "metadata": {
+          "module": "AnalysisOrchestrator",
+          "api_version": "",
+          "tool_version": ""
+        }
+      },
+      {
+        "step_id": "STEP-006",
+        "step_name": "target_prioritization",
+        "timestamp": "2026-07-26T22:09:42.994828",
+        "elapsed_from_start": 9.466,
+        "inputs": {
+          "candidates_count": 0
+        },
+        "outputs": {
+          "top_targets": []
+        },
+        "metadata": {
+          "module": "TargetPrioritizer",
+          "api_version": "",
+          "tool_version": ""
+        }
+      }
+    ]
+  },
+  "pipelines": {
+    "workflow_id": "WF-20260726-220933-296629",
+    "total_steps": 6,
+    "total_elapsed_seconds": 9.47,
+    "modules_used": [
+      "TraceabilityTracker",
+      "IntentClassifier",
+      "TaskPlanner",
+      "LiteratureRetriever",
+      "AnalysisOrchestrator",
+      "TargetPrioritizer"
+    ],
+    "module_summary": {
+      "TraceabilityTracker": 1,
+      "IntentClassifier": 1,
+      "TaskPlanner": 1,
+      "LiteratureRetriever": 1,
+      "AnalysisOrchestrator": 1,
+      "TargetPrioritizer": 1
+    },
+    "first_step": "2026-07-26T22:09:33.528904",
+    "last_step": "2026-07-26T22:09:42.994828"
+  }
+}

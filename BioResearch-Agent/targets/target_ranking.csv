@@ -1,0 +1,3 @@
+﻿ranking,rank_label,gene,total_score,dimensions
+1,Top Candidate,B,0.6492,"{'literature_support': 0.0, 'expression_foldchange': 0.236, 'functional_importance': 0.0, 'druggability': 0.2, 'novelty': 1.0, 'safety': 0.65}"
+2,High Priority,A,0.2765,"{'literature_support': 0.0, 'expression_foldchange': 0.26, 'functional_importance': 0.0, 'druggability': 0.2, 'novelty': 1.0, 'safety': 0.65}"

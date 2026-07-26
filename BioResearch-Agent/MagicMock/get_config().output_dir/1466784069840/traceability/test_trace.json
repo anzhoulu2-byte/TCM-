@@ -1,0 +1,43 @@
+{
+  "metadata": {
+    "app_name": "<MagicMock name='get_config().app_name' id='1466783322064'>",
+    "app_version": "<MagicMock name='get_config().app_version' id='1466779558800'>",
+    "python_version": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "workflow_id": "TEST-WF-001"
+  },
+  "summary": {
+    "workflow_id": "TEST-WF-001",
+    "total_steps": 1,
+    "total_elapsed_seconds": 0.0,
+    "modules_used": [
+      "TraceabilityTracker"
+    ],
+    "module_summary": {
+      "TraceabilityTracker": 1
+    },
+    "first_step": "2026-07-26T23:03:26.122169",
+    "last_step": "2026-07-26T23:03:26.122169"
+  },
+  "workflow_id": "TEST-WF-001",
+  "generated_at": "2026-07-26T23:03:26.122169",
+  "steps": [
+    {
+      "step_id": "STEP-001",
+      "step_name": "workflow_init",
+      "timestamp": "2026-07-26T23:03:26.122169",
+      "elapsed_from_start": 0.0,
+      "inputs": {
+        "workflow_id": "TEST-WF-001"
+      },
+      "outputs": {
+        "status": "initialized"
+      },
+      "metadata": {
+        "module": "TraceabilityTracker",
+        "api_version": "",
+        "tool_version": "",
+        "description": "工作流初始化"
+      }
+    }
+  ]
+}

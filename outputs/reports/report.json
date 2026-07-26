@@ -1,0 +1,200 @@
+{
+  "question": {
+    "disease": "寻找肺癌相关性靶点",
+    "keywords": [],
+    "question_type": "literature_review",
+    "description": "寻找肺癌相关性靶点"
+  },
+  "intent": {
+    "disease_type": "general",
+    "research_purpose": "literature_review",
+    "data_type_needed": [
+      "literature"
+    ]
+  },
+  "tasks": [
+    "literature_search",
+    "gene_expression_analysis",
+    "target_prioritization",
+    "experimental_protocol_design",
+    "report_generation"
+  ],
+  "literature": [],
+  "associated_genes": [],
+  "differential_expression": {
+    "status": "completed",
+    "start_time": "2026-07-26T22:57:25.571295",
+    "data_type": "bulk",
+    "differential_expression": null,
+    "enrichment_go": null,
+    "enrichment_kegg": null,
+    "survival": null,
+    "visualizations": {},
+    "summary": {
+      "data_type": "bulk",
+      "steps_total": 2,
+      "steps_success": 0,
+      "steps_failed": 2,
+      "elapsed_seconds": 0.0,
+      "n_genes_input": 0,
+      "n_samples": 0,
+      "de_genes": 0
+    },
+    "pipelines": [
+      {
+        "step": 1,
+        "module": "DifferentialExpression",
+        "status": "skipped"
+      },
+      {
+        "step": 2,
+        "module": "GO Enrichment",
+        "status": "skipped"
+      }
+    ],
+    "question": {
+      "disease": "寻找肺癌相关性靶点",
+      "keywords": [],
+      "question_type": "literature_review",
+      "description": "寻找肺癌相关性靶点"
+    },
+    "end_time": "2026-07-26T22:57:25.572670",
+    "elapsed_seconds": 0.0
+  },
+  "targets": [],
+  "protocol": {},
+  "traceability": {
+    "metadata": {
+      "app_name": "BioResearch-Agent",
+      "app_version": "1.0.0",
+      "python_version": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+      "workflow_id": "WF-20260726-225715-f7c440"
+    },
+    "summary": {
+      "workflow_id": "WF-20260726-225715-f7c440",
+      "total_steps": 5,
+      "total_elapsed_seconds": 9.64,
+      "modules_used": [
+        "TraceabilityTracker",
+        "IntentClassifier",
+        "TaskPlanner",
+        "LiteratureRetriever",
+        "AnalysisOrchestrator"
+      ],
+      "module_summary": {
+        "TraceabilityTracker": 1,
+        "IntentClassifier": 1,
+        "TaskPlanner": 1,
+        "LiteratureRetriever": 1,
+        "AnalysisOrchestrator": 1
+      },
+      "first_step": "2026-07-26T22:57:15.965996",
+      "last_step": "2026-07-26T22:57:25.578606"
+    },
+    "workflow_id": "WF-20260726-225715-f7c440",
+    "generated_at": "2026-07-26T22:57:25.589870",
+    "steps": [
+      {
+        "step_id": "STEP-001",
+        "step_name": "workflow_init",
+        "timestamp": "2026-07-26T22:57:15.965996",
+        "elapsed_from_start": 0.016,
+        "inputs": {
+          "workflow_id": "WF-20260726-225715-f7c440"
+        },
+        "outputs": {
+          "status": "initialized"
+        },
+        "metadata": {
+          "module": "TraceabilityTracker",
+          "api_version": "",
+          "tool_version": "",
+          "description": "工作流初始化"
+        }
+      },
+      {
+        "step_id": "STEP-002",
+        "step_name": "intent_classification",
+        "timestamp": "2026-07-26T22:57:15.965996",
+        "elapsed_from_start": 0.016,
+        "inputs": {
+          "question": "寻找肺癌相关性靶点"
+        },
+        "outputs": {
+          "disease_type": "general",
+          "research_purpose": "literature_review",
+          "data_type_needed": [
+            "literature"
+          ]
+        },
+        "metadata": {
+          "module": "IntentClassifier",
+          "api_version": "",
+          "tool_version": ""
+        }
+      },
+      {
+        "step_id": "STEP-003",
+        "step_name": "task_planning",
+        "timestamp": "2026-07-26T22:57:16.173627",
+        "elapsed_from_start": 0.224,
+        "inputs": {
+          "intent": {
+            "disease_type": "general",
+            "research_purpose": "literature_review",
+            "data_type_needed": [
+              "literature"
+            ]
+          }
+        },
+        "outputs": {
+          "tasks": [
+            "literature_search",
+            "gene_expression_analysis",
+            "target_prioritization",
+            "experimental_protocol_design",
+            "report_generation"
+          ]
+        },
+        "metadata": {
+          "module": "TaskPlanner",
+          "api_version": "",
+          "tool_version": ""
+        }
+      },
+      {
+        "step_id": "STEP-004",
+        "step_name": "literature_search",
+        "timestamp": "2026-07-26T22:57:25.506528",
+        "elapsed_from_start": 9.556,
+        "inputs": {
+          "query": "寻找肺癌相关性靶点"
+        },
+        "outputs": {
+          "lit": 0,
+          "genes": 0
+        },
+        "metadata": {
+          "module": "LiteratureRetriever",
+          "api_version": "",
+          "tool_version": ""
+        }
+      },
+      {
+        "step_id": "STEP-005",
+        "step_name": "bioinformatics_analysis",
+        "timestamp": "2026-07-26T22:57:25.578606",
+        "elapsed_from_start": 9.629,
+        "inputs": {},
+        "outputs": {
+          "status": "completed"
+        },
+        "metadata": {
+          "module": "AnalysisOrchestrator",
+          "api_version": "",
+          "tool_version": ""
+        }
+      }
+    ]
+  }
+}

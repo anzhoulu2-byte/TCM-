@@ -1,0 +1,54 @@
+{
+    "workflow_id": "WF-EXAMPLE-20240726",
+    "created_at": "2026-07-26T12:00:00",
+    "schema_version": "1.0",
+    "description": "Example workflow for Alzheimer's disease biomarker discovery. This workflow can be imported into BioResearch-Agent to reproduce the full analysis.",
+    "app": {
+        "app_name": "BioResearch-Agent",
+        "app_version": "1.0.0"
+    },
+    "pipeline": [
+        {
+            "step_id": "STEP-001",
+            "step_name": "intent_classification",
+            "module": "IntentClassifier",
+            "inputs": {"question": "Alzheimer disease biomarkers"},
+            "elapsed_seconds": 2.5
+        },
+        {
+            "step_id": "STEP-002",
+            "step_name": "task_planning",
+            "module": "TaskPlanner",
+            "inputs": {"intent": {"disease_type": "alzheimer disease"}},
+            "elapsed_seconds": 1.8
+        },
+        {
+            "step_id": "STEP-003",
+            "step_name": "literature_search",
+            "module": "LiteratureRetriever",
+            "inputs": {"disease": "Alzheimer disease", "keywords": ["APOE4", "amyloid"]},
+            "elapsed_seconds": 15.2
+        },
+        {
+            "step_id": "STEP-004",
+            "step_name": "target_scoring",
+            "module": "TargetScorer",
+            "inputs": {"candidates": ["APOE", "APP", "TREM2"]},
+            "elapsed_seconds": 3.1
+        },
+        {
+            "step_id": "STEP-005",
+            "step_name": "protocol_generation",
+            "module": "ProtocolGenerator",
+            "inputs": {"target": "APOE", "experiment_type": "in_vitro"},
+            "elapsed_seconds": 4.0
+        },
+        {
+            "step_id": "STEP-006",
+            "step_name": "report_generation",
+            "module": "ReportGenerator",
+            "inputs": {"report_type": "full"},
+            "elapsed_seconds": 2.2
+        }
+    ]
+}

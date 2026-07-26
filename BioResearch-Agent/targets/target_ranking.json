@@ -1,0 +1,30 @@
+[
+  {
+    "ranking": 1,
+    "rank_label": "Top Candidate",
+    "gene": "B",
+    "total_score": 0.6492,
+    "dimensions": {
+      "literature_support": 0.0,
+      "expression_foldchange": 0.236,
+      "functional_importance": 0.0,
+      "druggability": 0.2,
+      "novelty": 1.0,
+      "safety": 0.65
+    }
+  },
+  {
+    "ranking": 2,
+    "rank_label": "High Priority",
+    "gene": "A",
+    "total_score": 0.2765,
+    "dimensions": {
+      "literature_support": 0.0,
+      "expression_foldchange": 0.26,
+      "functional_importance": 0.0,
+      "druggability": 0.2,
+      "novelty": 1.0,
+      "safety": 0.65
+    }
+  }
+]

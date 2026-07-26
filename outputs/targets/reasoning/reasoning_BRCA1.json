@@ -1,0 +1,53 @@
+{
+  "gene": "BRCA1",
+  "final_score": 0.4977777777777777,
+  "assessments": {
+    "literature_agent": {
+      "confidence": 1.0,
+      "strengths": [
+        "500 related publications"
+      ],
+      "weaknesses": [
+        "No major weaknesses identified"
+      ],
+      "key_papers": [],
+      "reasoning": "Rule-based: 500 publications found."
+    },
+    "omics_agent": {
+      "confidence": 0.6666666666666666,
+      "expression_evidence": "log2FC=2.0",
+      "pathway_evidence": "N/A",
+      "genetic_evidence": "N/A",
+      "strengths": [
+        "Differential expression: |log2FC|=2.00"
+      ],
+      "weaknesses": [],
+      "reasoning": "Rule-based omics assessment."
+    },
+    "network_agent": {
+      "confidence": 0.2,
+      "network_role": "module_member",
+      "interaction_partners_count": 0,
+      "key_pathways": [
+        "Homologous recombination"
+      ],
+      "strengths": [
+        "Enriched in 1 pathways"
+      ],
+      "weaknesses": [],
+      "reasoning": "Rule-based network assessment."
+    },
+    "critic_agent": {
+      "confidence": 0.6222222222222221,
+      "priority_score": 0.4977777777777777,
+      "final_verdict": "inconclusive",
+      "risks": [
+        "Rule-based assessment - no LLM available"
+      ],
+      "recommendations": [
+        "Manual review recommended"
+      ],
+      "reasoning": "Rule-based critic: average agent confidence=0.62"
+    }
+  }
+}

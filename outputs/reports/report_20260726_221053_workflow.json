@@ -1,0 +1,81 @@
+{
+  "workflow_id": "WF-20260726-221044-c33910",
+  "created_at": "2026-07-26T22:10:53.613378",
+  "schema_version": "1.0",
+  "app": {
+    "app_name": "BioResearch-Agent",
+    "app_version": "1.0.0",
+    "python_version": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "workflow_id": "WF-20260726-221044-c33910"
+  },
+  "pipeline": [
+    {
+      "step_id": "STEP-002",
+      "step_name": "intent_classification",
+      "module": "IntentClassifier",
+      "inputs": {
+        "question": {
+          "disease": "test",
+          "question_type": "mechanism",
+          "description": "test",
+          "keywords": []
+        }
+      },
+      "elapsed_seconds": 0.002,
+      "outputs": {},
+      "requirements": {}
+    },
+    {
+      "step_id": "STEP-003",
+      "step_name": "task_planning",
+      "module": "TaskPlanner",
+      "inputs": {
+        "intent": {
+          "disease_type": "general",
+          "research_purpose": "literature_review",
+          "data_type_needed": [
+            "literature"
+          ]
+        }
+      },
+      "elapsed_seconds": 0.002,
+      "outputs": {},
+      "requirements": {}
+    },
+    {
+      "step_id": "STEP-004",
+      "step_name": "literature_search",
+      "module": "LiteratureRetriever",
+      "inputs": {
+        "query": "test"
+      },
+      "elapsed_seconds": 8.984,
+      "outputs": {},
+      "requirements": {}
+    },
+    {
+      "step_id": "STEP-005",
+      "step_name": "bioinformatics_analysis",
+      "module": "AnalysisOrchestrator",
+      "inputs": {
+        "data_type": "bulk"
+      },
+      "elapsed_seconds": 9.027,
+      "outputs": {},
+      "requirements": {}
+    },
+    {
+      "step_id": "STEP-006",
+      "step_name": "target_prioritization",
+      "module": "TargetPrioritizer",
+      "inputs": {
+        "candidates_count": 0
+      },
+      "elapsed_seconds": 9.029,
+      "outputs": {},
+      "requirements": {}
+    }
+  ],
+  "export_format": "BioResearch-Agent Workflow",
+  "description": "Reproducible analysis workflow"
+}

@@ -1,0 +1,59 @@
+{
+    "question": {
+        "disease": "Alzheimer disease",
+        "question_type": "biomarker",
+        "description": "Explore APOE4 mechanisms and identify biomarkers.",
+        "keywords": ["APOE4", "amyloid", "tau"]
+    },
+    "intent": {
+        "disease_type": "alzheimer disease",
+        "research_purpose": "biomarker_discovery",
+        "data_type_needed": ["gene_expression", "proteomics", "literature"]
+    },
+    "tasks": [
+        "literature_search",
+        "gene_expression_analysis",
+        "biomarker_discovery",
+        "report_generation"
+    ],
+    "literature": [
+        {
+            "pmid": "12345678",
+            "title": "APOE4 accelerates neurodegeneration in Alzheimer disease",
+            "abstract": "APOE4 is the strongest genetic risk factor for late-onset Alzheimer disease...",
+            "authors": ["Saunders AM", "Strittmatter WJ"],
+            "journal": "Neurology",
+            "year": 2024,
+            "doi": "10.1212/test"
+        }
+    ],
+    "associated_genes": [
+        {"gene_symbol": "APOE", "gene_id": "ENSG00000130203", "score": 0.95, "evidence": ["genetic_association", "literature_support"]},
+        {"gene_symbol": "APP", "gene_id": "ENSG00000142192", "score": 0.88, "evidence": ["amyloid_pathway"]},
+        {"gene_symbol": "TREM2", "gene_id": "ENSG00000095970", "score": 0.82, "evidence": ["immune_regulation"]}
+    ],
+    "targets": [
+        {
+            "ranking": 1,
+            "gene": "APOE",
+            "total_score": 0.91,
+            "dimensions": {
+                "literature_support": {"score": 0.95, "weight": 0.2},
+                "expression_foldchange": {"score": 0.85, "weight": 0.15},
+                "functional_importance": {"score": 0.90, "weight": 0.2},
+                "druggability": {"score": 0.70, "weight": 0.2},
+                "novelty": {"score": 0.30, "weight": 0.1},
+                "safety": {"score": 0.75, "weight": 0.15}
+            }
+        }
+    ],
+    "protocol": {
+        "title": "APOE 靶点验证方案",
+        "protocol_id": "PROTO-20240726-001",
+        "research_objectives": [
+            {"id": "OBJ-01", "objective": "验证 APOE4 在 AD 患者样本中的差异表达", "priority": "high"},
+            {"id": "OBJ-02", "objective": "评估 APOE4 对神经炎症的功能影响", "priority": "high"}
+        ]
+    },
+    "summary": "Integrated multi-omics analysis identified APOE as the top therapeutic target for Alzheimer disease."
+}

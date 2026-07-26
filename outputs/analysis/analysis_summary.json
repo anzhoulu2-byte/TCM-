@@ -1,0 +1,40 @@
+{
+  "status": "completed",
+  "data_type": "bulk",
+  "start_time": "2026-07-26T22:57:25.571295",
+  "end_time": "2026-07-26T22:57:25.572670",
+  "elapsed_seconds": 0.0,
+  "pipelines": [
+    {
+      "step": 1,
+      "module": "DifferentialExpression",
+      "status": "skipped"
+    },
+    {
+      "step": 2,
+      "module": "GO Enrichment",
+      "status": "skipped"
+    }
+  ],
+  "summary": {
+    "data_type": "bulk",
+    "steps_total": 2,
+    "steps_success": 0,
+    "steps_failed": 2,
+    "elapsed_seconds": 0.0,
+    "n_genes_input": 0,
+    "n_samples": 0,
+    "de_genes": 0
+  },
+  "visualizations": [],
+  "question": {
+    "disease": "寻找肺癌相关性靶点",
+    "keywords": [],
+    "question_type": "literature_review",
+    "description": "寻找肺癌相关性靶点"
+  },
+  "de_summary": null,
+  "go_summary": null,
+  "kegg_summary": null,
+  "survival_summary": null
+}

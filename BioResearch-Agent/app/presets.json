@@ -1,0 +1,112 @@
+{
+    "strict_discovery": {
+        "name": "🏆 严格发现模式",
+        "description": "高置信度靶点发现，适用于已有初步候选、需要严格验证的场景",
+        "config": {
+            "screening_strictness": "strict",
+            "log2fc_threshold": 2.0,
+            "pvalue_threshold": 0.01,
+            "enrichment_databases": ["GO_BP", "KEGG"],
+            "enrichment_significance": "strict",
+            "min_genes_per_pathway": 5,
+            "research_area": "tumor_immunology",
+            "custom_pathways": "",
+            "focus_genes": "",
+            "exclude_mitochondrial": true,
+            "exclude_ribosomal": true,
+            "exclude_immunoglobulin": false,
+            "evidence_sources": ["literature", "multi_omics", "genetic"],
+            "evidence_confidence": 8,
+            "output_count": 5,
+            "sort_by": "comprehensive_score"
+        }
+    },
+    "exploratory": {
+        "name": "🔬 探索性模式",
+        "description": "广覆盖筛选，适用于新领域探索、发现潜在新靶点",
+        "config": {
+            "screening_strictness": "relaxed",
+            "log2fc_threshold": 0.5,
+            "pvalue_threshold": 0.1,
+            "enrichment_databases": ["GO_BP", "GO_CC", "GO_MF", "KEGG", "Reactome"],
+            "enrichment_significance": "relaxed",
+            "min_genes_per_pathway": 2,
+            "research_area": "custom",
+            "custom_pathways": "",
+            "focus_genes": "",
+            "exclude_mitochondrial": false,
+            "exclude_ribosomal": false,
+            "exclude_immunoglobulin": false,
+            "evidence_sources": ["literature", "multi_omics", "genetic", "drug_accessibility", "clinical"],
+            "evidence_confidence": 4,
+            "output_count": 20,
+            "sort_by": "fold_change"
+        }
+    },
+    "drug_target": {
+        "name": "💊 药物靶点模式",
+        "description": "侧重可药性评估，适用于寻找已有药物或易成药靶点",
+        "config": {
+            "screening_strictness": "standard",
+            "log2fc_threshold": 1.0,
+            "pvalue_threshold": 0.05,
+            "enrichment_databases": ["GO_BP", "KEGG", "Reactome"],
+            "enrichment_significance": "standard",
+            "min_genes_per_pathway": 3,
+            "research_area": "drug_metabolism",
+            "custom_pathways": "",
+            "focus_genes": "",
+            "exclude_mitochondrial": true,
+            "exclude_ribosomal": true,
+            "exclude_immunoglobulin": false,
+            "evidence_sources": ["literature", "drug_accessibility", "clinical"],
+            "evidence_confidence": 7,
+            "output_count": 10,
+            "sort_by": "druggability"
+        }
+    },
+    "basic_research": {
+        "name": "🧬 基础研究模式",
+        "description": "侧重功能机制解析，适用于探索疾病机制的学术研究",
+        "config": {
+            "screening_strictness": "standard",
+            "log2fc_threshold": 1.0,
+            "pvalue_threshold": 0.05,
+            "enrichment_databases": ["GO_BP", "GO_CC", "GO_MF", "KEGG", "WikiPathways"],
+            "enrichment_significance": "standard",
+            "min_genes_per_pathway": 3,
+            "research_area": "apoptosis",
+            "custom_pathways": "",
+            "focus_genes": "",
+            "exclude_mitochondrial": false,
+            "exclude_ribosomal": false,
+            "exclude_immunoglobulin": false,
+            "evidence_sources": ["literature", "multi_omics", "genetic"],
+            "evidence_confidence": 6,
+            "output_count": 15,
+            "sort_by": "comprehensive_score"
+        }
+    },
+    "immune_oncology": {
+        "name": "🛡️ 肿瘤免疫模式",
+        "description": "聚焦肿瘤免疫微环境，适用于免疫治疗相关靶点发现",
+        "config": {
+            "screening_strictness": "standard",
+            "log2fc_threshold": 1.0,
+            "pvalue_threshold": 0.05,
+            "enrichment_databases": ["GO_BP", "KEGG", "Reactome"],
+            "enrichment_significance": "standard",
+            "min_genes_per_pathway": 3,
+            "research_area": "tumor_immunology",
+            "custom_pathways": "T cell receptor signaling, antigen processing and presentation, cytokine signaling",
+            "focus_genes": "CD8A, PD-1, CTLA-4, LAG3, TIM-3",
+            "exclude_mitochondrial": true,
+            "exclude_ribosomal": true,
+            "exclude_immunoglobulin": true,
+            "evidence_sources": ["literature", "multi_omics", "clinical"],
+            "evidence_confidence": 7,
+            "output_count": 10,
+            "sort_by": "literature_support"
+        }
+    }
+}
