@@ -1,381 +1,354 @@
 "use client"
 
 import { useState } from "react"
-import { X, Eye, EyeOff, Check, ArrowRight, Dna, Key, Settings, FlaskConical } from "lucide-react"
+import { useRouter } from "next/navigation"
+import {
+  X, Send, Loader2, Sparkles, Search, Sliders, CheckCircle,
+  BookOpen, Dna, Target, FlaskConical, AlertCircle,
+} from "lucide-react"
+import { api, type AnalysisRequest } from "@/lib/api"
 
 interface StartModalProps {
   open: boolean
   onClose: () => void
+  initialQuestion?: string
 }
 
-// ── 预设配置 ──────────────────────────────────
-
-const PRESETS = [
-  {
-    id: "strict",
-    name: "🏆 严格发现模式",
-    desc: "高置信度，适合验证已知靶点",
-    config: { log2fc: 2.0, padj: 0.01, dbs: ["GO_BP", "KEGG"], minGenes: 5, output: 5 },
-  },
-  {
-    id: "exploratory",
-    name: "🔬 探索性模式",
-    desc: "广覆盖，适合新领域探索",
-    config: { log2fc: 0.5, padj: 0.1, dbs: ["GO_BP", "GO_CC", "GO_MF", "KEGG", "Reactome"], minGenes: 2, output: 20 },
-  },
-  {
-    id: "drug",
-    name: "💊 药物靶点模式",
-    desc: "侧重可药性评估",
-    config: { log2fc: 1.0, padj: 0.05, dbs: ["GO_BP", "KEGG", "Reactome"], minGenes: 3, output: 10 },
-  },
-  {
-    id: "basic",
-    name: "🧬 基础研究模式",
-    desc: "侧重功能机制解析",
-    config: { log2fc: 1.0, padj: 0.05, dbs: ["GO_BP", "GO_CC", "GO_MF", "KEGG"], minGenes: 3, output: 15 },
-  },
+const QUESTION_TYPES = [
+  { value: "mechanism", label: "机制研究", desc: "研究疾病发生发展的分子机制" },
+  { value: "biomarker", label: "生物标志物", desc: "寻找诊断或预后标志物" },
+  { value: "therapy", label: "治疗靶点", desc: "发现新的治疗干预靶点" },
+  { value: "diagnosis", label: "诊断方法", desc: "探索新的诊断策略" },
+  { value: "drug_target_identification", label: "药物靶点鉴定", desc: "鉴定可成药的分子靶点" },
 ]
 
-export default function StartModal({ open, onClose }: StartModalProps) {
-  const [step, setStep] = useState<"api" | "params" | "review">("api")
-  const [showKeys, setShowKeys] = useState(false)
-  const [selectedPreset, setSelectedPreset] = useState("strict")
+const EXAMPLE_QUESTIONS = [
+  "肝癌耐药性的新靶点发现",
+  "阿尔茨海默病早期诊断标志物",
+  "三阴性乳腺癌的免疫逃逸机制",
+  "非小细胞肺癌EGFR-TKI耐药机制",
+  "类风湿关节炎的新治疗策略",
+]
 
-  // API Key 状态
-  const [apiKeys, setApiKeys] = useState({ deepseek: "", openai: "", email: "" })
+export default function StartModal({ open, onClose, initialQuestion = "" }: StartModalProps) {
+  const router = useRouter()
 
-  // 参数状态
-  const [params, setParams] = useState({
-    log2fc: 2.0, padj: 0.01,
-    databases: ["GO_BP", "KEGG"],
-    minGenes: 5, outputCount: 5,
-    sortBy: "comprehensive_score",
-    focusGenes: "",
-    excludeMito: false, excludeRibo: false,
-  })
+  const [step, setStep] = useState<"input" | "submitting" | "redirecting">("input")
+  const [question, setQuestion] = useState(initialQuestion)
+  const [keywords, setKeywords] = useState("")
+  const [questionType, setQuestionType] = useState("mechanism")
+  const [showAdvanced, setShowAdvanced] = useState(false)
+  const [topN, setTopN] = useState(5)
+  const [error, setError] = useState("")
+  const [apiHealth, setApiHealth] = useState<boolean | null>(null)
 
   if (!open) return null
 
-  const applyPreset = (id: string) => {
-    const p = PRESETS.find((x) => x.id === id)
-    if (!p) return
-    setSelectedPreset(id)
-    setParams((prev) => ({ ...prev, ...p.config }))
+  const handleSubmit = async () => {
+    if (!question.trim()) {
+      setError("请输入研究问题")
+      return
+    }
+
+    setError("")
+    setStep("submitting")
+
+    try {
+      // 构建请求
+      const data: AnalysisRequest = {
+        question: question.trim(),
+        question_type: questionType,
+        keywords: keywords
+          .split(/[,，]/)
+          .map((k) => k.trim())
+          .filter(Boolean),
+        top_n: topN,
+      }
+
+      // 提交分析任务
+      const task = await api.submitAnalysis(data)
+      setStep("redirecting")
+
+      // 短暂延迟后跳转到分析页面
+      setTimeout(() => {
+        router.push(`/analysis?taskId=${task.task_id}`)
+      }, 800)
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : "提交失败，请稍后重试"
+      setError(message)
+      setStep("input")
+    }
   }
 
-  const handleStart = () => {
-    // 跳转到 Streamlit 应用，携带参数
-    const query = new URLSearchParams({
-      deepseek: apiKeys.deepseek,
-      openai: apiKeys.openai,
-      email: apiKeys.email,
-      log2fc: String(params.log2fc),
-      padj: String(params.padj),
-      databases: params.databases.join(","),
-      minGenes: String(params.minGenes),
-      outputCount: String(params.outputCount),
-      sortBy: params.sortBy,
-      preset: selectedPreset,
-    })
-    window.location.href = `/analysis?${query.toString()}`
+  const checkHealth = async () => {
+    try {
+      const h = await api.health()
+      setApiHealth(h.status === "ok")
+    } catch {
+      setApiHealth(false)
+    }
+  }
+
+  // 加载时检测后端状态
+  if (apiHealth === null && step === "input") {
+    checkHealth()
   }
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
       {/* 遮罩 */}
-      <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" onClick={onClose} />
+      <div
+        className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+        onClick={step === "input" ? onClose : undefined}
+      />
 
-      {/* 弹窗 */}
-      <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto glass-card !p-0 animate-fade-in">
+      {/* 弹窗主体 */}
+      <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto
+                      bg-white rounded-2xl shadow-2xl animate-scale-in">
         {/* 头部 */}
-        <div className="flex items-center justify-between p-6 border-b border-white/20">
+        <div className="sticky top-0 bg-gradient-to-r from-primary/5 to-teal-50
+                        border-b border-primary/10 p-6 flex items-center justify-between z-10">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-              <Dna className="w-5 h-5 text-primary" />
+            <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
+              <Sparkles className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h2 className="text-lg font-semibold">配置分析</h2>
-              <p className="text-xs text-gray-500">配置完成后将跳转到分析平台</p>
+              <h2 className="text-lg font-bold">开始研究分析</h2>
+              <p className="text-sm text-gray-500">输入你的研究问题，AI 将为你完成全流程分析</p>
             </div>
           </div>
-          <button onClick={onClose} className="p-2 hover:bg-black/5 rounded-lg transition-colors">
-            <X className="w-5 h-5 text-gray-500" />
-          </button>
+          {step === "input" && (
+            <button
+              onClick={onClose}
+              className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            >
+              <X className="w-5 h-5 text-gray-400" />
+            </button>
+          )}
         </div>
 
-        {/* 步骤指示器 */}
-        <div className="flex items-center gap-2 px-6 pt-4 pb-2">
-          {(["api", "params", "review"] as const).map((s, i) => (
-            <div key={s} className="flex items-center gap-2 flex-1">
-              <div
-                className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-medium
-                  ${step === s ? "bg-primary text-white" : step === "api" && i > 0 || step === "params" && i > 1 ? "bg-primary/20 text-primary" : "bg-gray-100 text-gray-400"}`}
-              >
-                {i === 0 ? <Key className="w-3.5 h-3.5" /> : i === 1 ? <Settings className="w-3.5 h-3.5" /> : <Check className="w-3.5 h-3.5" />}
-              </div>
-              <span className={`text-xs ${step === s ? "text-primary font-medium" : "text-gray-400"}`}>
-                {s === "api" ? "API 密钥" : s === "params" ? "分析参数" : "确认"}
-              </span>
-              {i < 2 && <div className="flex-1 h-px bg-gray-200" />}
-            </div>
-          ))}
-        </div>
-
+        {/* 内容区 */}
         <div className="p-6">
-          {/* 步骤 1: API 密钥 */}
-          {step === "api" && (
-            <div className="space-y-4 animate-fade-in">
-              <h3 className="font-medium text-base">🔑 配置 API 密钥</h3>
-              <p className="text-sm text-gray-500">密钥仅保存在本地浏览器，不会上传到服务器</p>
-
-              <div className="space-y-3">
-                <div>
-                  <label className="text-sm font-medium text-gray-700 mb-1 block">
-                    DeepSeek API Key <span className="text-red-400">*</span>
-                  </label>
-                  <div className="relative">
-                    <input
-                      type={showKeys ? "text" : "password"}
-                      value={apiKeys.deepseek}
-                      onChange={(e) => setApiKeys((p) => ({ ...p, deepseek: e.target.value }))}
-                      placeholder="sk-..."
-                      className="input-glass pr-10"
-                    />
-                    <button
-                      onClick={() => setShowKeys(!showKeys)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
-                    >
-                      {showKeys ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                    </button>
-                  </div>
-                </div>
-
-                <div>
-                  <label className="text-sm font-medium text-gray-700 mb-1 block">OpenAI API Key（可选）</label>
-                  <input
-                    type="password"
-                    value={apiKeys.openai}
-                    onChange={(e) => setApiKeys((p) => ({ ...p, openai: e.target.value }))}
-                    placeholder="sk-..."
-                    className="input-glass"
+          {/* ---- 输入步骤 ---- */}
+          {step === "input" && (
+            <div className="space-y-6">
+              {/* API 状态 */}
+              {apiHealth !== null && (
+                <div
+                  className={`flex items-center gap-2 text-xs px-3 py-2 rounded-lg ${
+                    apiHealth
+                      ? "bg-emerald-50 text-emerald-700"
+                      : "bg-amber-50 text-amber-700"
+                  }`}
+                >
+                  <div
+                    className={`w-2 h-2 rounded-full ${
+                      apiHealth ? "bg-emerald-500" : "bg-amber-500"
+                    }`}
                   />
+                  {apiHealth
+                    ? "后端 API 已连接，可以开始分析"
+                    : "后端 API 未连接（模拟模式下仍可使用）"}
                 </div>
+              )}
 
-                <div>
-                  <label className="text-sm font-medium text-gray-700 mb-1 block">PubMed 邮箱</label>
-                  <input
-                    type="email"
-                    value={apiKeys.email}
-                    onChange={(e) => setApiKeys((p) => ({ ...p, email: e.target.value }))}
-                    placeholder="your@email.com"
-                    className="input-glass"
-                  />
-                </div>
-              </div>
-
-              <div className="flex justify-end pt-2">
-                <button onClick={() => setStep("params")} className="btn-primary text-sm !py-2.5">
-                  下一步 <ArrowRight className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-          )}
-
-          {/* 步骤 2: 分析参数 */}
-          {step === "params" && (
-            <div className="space-y-5 animate-fade-in">
-              <h3 className="font-medium text-base">⚙️ 分析参数配置</h3>
-
-              {/* 预设方案 */}
+              {/* 研究问题输入 */}
               <div>
-                <label className="text-sm font-medium text-gray-700 mb-2 block">预设方案</label>
-                <div className="grid grid-cols-2 gap-2">
-                  {PRESETS.map((p) => (
-                    <button
-                      key={p.id}
-                      onClick={() => applyPreset(p.id)}
-                      className={`p-3 rounded-xl text-left text-sm border transition-all
-                        ${selectedPreset === p.id
-                          ? "border-primary bg-primary/5 ring-1 ring-primary/30"
-                          : "border-gray-200 hover:border-primary/30 bg-white/50"}`}
-                    >
-                      <div className="font-medium text-gray-800">{p.name}</div>
-                      <div className="text-xs text-gray-500 mt-0.5">{p.desc}</div>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* 差异表达 */}
-              <div>
-                <label className="text-sm font-medium text-gray-700 mb-2 block">📊 差异表达筛选</label>
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <div className="flex justify-between text-xs text-gray-500 mb-1">
-                      <span>log2FC 阈值</span>
-                      <span className="font-medium text-primary">{params.log2fc}</span>
-                    </div>
-                    <input
-                      type="range" min="0.5" max="3" step="0.1"
-                      value={params.log2fc}
-                      onChange={(e) => setParams((p) => ({ ...p, log2fc: parseFloat(e.target.value) }))}
-                      className="w-full accent-primary"
-                    />
-                  </div>
-                  <div>
-                    <div className="flex justify-between text-xs text-gray-500 mb-1">
-                      <span>padj 阈值</span>
-                      <span className="font-medium text-primary">{params.padj}</span>
-                    </div>
-                    <input
-                      type="range" min="0.001" max="0.1" step="0.001"
-                      value={params.padj}
-                      onChange={(e) => setParams((p) => ({ ...p, padj: parseFloat(e.target.value) }))}
-                      className="w-full accent-primary"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* 富集数据库 */}
-              <div>
-                <label className="text-sm font-medium text-gray-700 mb-2 block">🔬 富集数据库</label>
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    { id: "GO_BP", label: "GO_BP" },
-                    { id: "GO_CC", label: "GO_CC" },
-                    { id: "GO_MF", label: "GO_MF" },
-                    { id: "KEGG", label: "KEGG" },
-                    { id: "Reactome", label: "Reactome" },
-                  ].map((db) => (
-                    <button
-                      key={db.id}
-                      onClick={() =>
-                        setParams((p) => ({
-                          ...p,
-                          databases: p.databases.includes(db.id)
-                            ? p.databases.filter((d) => d !== db.id)
-                            : [...p.databases, db.id],
-                        }))
-                      }
-                      className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all
-                        ${params.databases.includes(db.id)
-                          ? "bg-primary text-white border-primary"
-                          : "bg-white text-gray-600 border-gray-200 hover:border-primary/30"}`}
-                    >
-                      {db.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* 输出配置 */}
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="text-sm font-medium text-gray-700 mb-1 block">输出 Top N</label>
-                  <select
-                    value={params.outputCount}
-                    onChange={(e) => setParams((p) => ({ ...p, outputCount: parseInt(e.target.value) }))}
-                    className="input-glass !py-2"
-                  >
-                    {[5, 10, 15, 20].map((n) => (
-                      <option key={n} value={n}>Top {n}</option>
-                    ))}
-                  </select>
-                </div>
-                <div>
-                  <label className="text-sm font-medium text-gray-700 mb-1 block">排序依据</label>
-                  <select
-                    value={params.sortBy}
-                    onChange={(e) => setParams((p) => ({ ...p, sortBy: e.target.value }))}
-                    className="input-glass !py-2"
-                  >
-                    <option value="comprehensive_score">综合评分</option>
-                    <option value="fold_change">差异倍数</option>
-                    <option value="literature_support">文献支持度</option>
-                    <option value="druggability">可药性</option>
-                  </select>
-                </div>
-              </div>
-
-              {/* 基因筛选 */}
-              <div>
-                <label className="text-sm font-medium text-gray-700 mb-1 block">重点关注基因（可选）</label>
-                <input
-                  value={params.focusGenes}
-                  onChange={(e) => setParams((p) => ({ ...p, focusGenes: e.target.value }))}
-                  placeholder="TP53, MYC, EGFR (逗号分隔)"
-                  className="input-glass !py-2"
+                <label className="block text-sm font-medium mb-2 flex items-center gap-2">
+                  <Search className="w-4 h-4 text-primary" />
+                  研究问题 <span className="text-red-400">*</span>
+                </label>
+                <textarea
+                  value={question}
+                  onChange={(e) => {
+                    setQuestion(e.target.value)
+                    setError("")
+                  }}
+                  placeholder="描述你的研究问题，越详细越好...&#10;例如：探索非小细胞肺癌中 EGFR 突变导致的耐药机制并寻找新的治疗靶点"
+                  rows={3}
+                  className="w-full px-4 py-3 border border-gray-200 rounded-xl
+                             focus:outline-none focus:ring-2 focus:ring-primary/30
+                             focus:border-primary text-sm resize-none
+                             placeholder:text-gray-400 transition-all"
                 />
-                <div className="flex gap-3 mt-2">
-                  <label className="flex items-center gap-1.5 text-xs text-gray-500">
-                    <input
-                      type="checkbox" checked={params.excludeMito}
-                      onChange={(e) => setParams((p) => ({ ...p, excludeMito: e.target.checked }))}
-                      className="accent-primary"
-                    /> 排除线粒体基因
-                  </label>
-                  <label className="flex items-center gap-1.5 text-xs text-gray-500">
-                    <input
-                      type="checkbox" checked={params.excludeRibo}
-                      onChange={(e) => setParams((p) => ({ ...p, excludeRibo: e.target.checked }))}
-                      className="accent-primary"
-                    /> 排除核糖体蛋白
-                  </label>
+              </div>
+
+              {/* 问题类型 */}
+              <div>
+                <label className="block text-sm font-medium mb-3 flex items-center gap-2">
+                  <Target className="w-4 h-4 text-primary" />
+                  研究类型
+                </label>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                  {QUESTION_TYPES.map((qt) => (
+                    <button
+                      key={qt.value}
+                      onClick={() => setQuestionType(qt.value)}
+                      className={`text-left p-3 rounded-xl border-2 transition-all text-sm ${
+                        questionType === qt.value
+                          ? "border-primary bg-primary/5 text-primary"
+                          : "border-gray-100 hover:border-gray-200 text-gray-600"
+                      }`}
+                    >
+                      <div className="font-medium text-xs">{qt.label}</div>
+                      <div className="text-[10px] opacity-60 mt-0.5">{qt.desc}</div>
+                    </button>
+                  ))}
                 </div>
               </div>
 
-              <div className="flex justify-between pt-2">
-                <button onClick={() => setStep("api")} className="text-sm text-gray-500 hover:text-gray-700">
-                  ← 返回
+              {/* 关键词 */}
+              <div>
+                <label className="block text-sm font-medium mb-2 flex items-center gap-2">
+                  <BookOpen className="w-4 h-4 text-primary" />
+                  关键词（可选，逗号分隔）
+                </label>
+                <input
+                  type="text"
+                  value={keywords}
+                  onChange={(e) => setKeywords(e.target.value)}
+                  placeholder="例如：EGFR, 耐药, 信号通路, 靶向治疗"
+                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl
+                             focus:outline-none focus:ring-2 focus:ring-primary/30
+                             focus:border-primary text-sm
+                             placeholder:text-gray-400 transition-all"
+                />
+              </div>
+
+              {/* 高级选项 */}
+              <div>
+                <button
+                  onClick={() => setShowAdvanced(!showAdvanced)}
+                  className="flex items-center gap-2 text-sm text-gray-400
+                             hover:text-gray-600 transition-colors"
+                >
+                  <Sliders className="w-4 h-4" />
+                  高级选项
+                  <span className="text-[10px] transition-transform"
+                        style={{ transform: showAdvanced ? "rotate(180deg)" : "rotate(0)" }}>
+                    ▼
+                  </span>
                 </button>
-                <button onClick={() => setStep("review")} className="btn-primary text-sm !py-2.5">
-                  下一步 <ArrowRight className="w-4 h-4" />
+                {showAdvanced && (
+                  <div className="mt-3 p-4 bg-gray-50 rounded-xl space-y-3">
+                    <div>
+                      <label className="block text-xs font-medium text-gray-500 mb-1">
+                        候选靶点数量: {topN}
+                      </label>
+                      <input
+                        type="range"
+                        min={1}
+                        max={15}
+                        value={topN}
+                        onChange={(e) => setTopN(Number(e.target.value))}
+                        className="w-full h-2 bg-gray-200 rounded-full appearance-none
+                                   cursor-pointer accent-primary"
+                      />
+                      <div className="flex justify-between text-[10px] text-gray-400 mt-0.5">
+                        <span>1</span><span>15</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* 示例问题 */}
+              <div>
+                <p className="text-xs text-gray-400 mb-2">试试这些例子：</p>
+                <div className="flex flex-wrap gap-2">
+                  {EXAMPLE_QUESTIONS.map((eq) => (
+                    <button
+                      key={eq}
+                      onClick={() => {
+                        setQuestion(eq)
+                        setError("")
+                      }}
+                      className="text-xs px-3 py-1.5 bg-gray-50 hover:bg-primary/5
+                                 border border-gray-100 hover:border-primary/20
+                                 rounded-full text-gray-500 hover:text-primary
+                                 transition-all"
+                    >
+                      {eq}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* 错误提示 */}
+              {error && (
+                <div className="flex items-center gap-2 text-sm text-red-500 bg-red-50
+                                px-4 py-3 rounded-xl">
+                  <AlertCircle className="w-4 h-4 shrink-0" />
+                  {error}
+                </div>
+              )}
+
+              {/* 操作按钮 */}
+              <div className="flex items-center gap-3 pt-2">
+                <button onClick={onClose} className="btn-secondary text-sm">
+                  取消
+                </button>
+                <button
+                  onClick={handleSubmit}
+                  disabled={!question.trim()}
+                  className="btn-primary flex-1 text-sm !py-3 disabled:opacity-50
+                             disabled:cursor-not-allowed"
+                >
+                  <Send className="w-4 h-4" />
+                  开始分析
                 </button>
               </div>
             </div>
           )}
 
-          {/* 步骤 3: 确认 */}
-          {step === "review" && (
-            <div className="space-y-4 animate-fade-in">
-              <h3 className="font-medium text-base">✅ 确认配置</h3>
-
-              <div className="bg-white/50 rounded-xl p-4 space-y-2 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-gray-500">DeepSeek Key</span>
-                  <span className="font-mono">{apiKeys.deepseek ? `${apiKeys.deepseek.slice(0, 8)}...` : "未配置"}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-500">筛选严格度</span>
-                  <span>{params.log2fc >= 2 ? "严格" : params.log2fc >= 1 ? "标准" : "宽松"} (log2FC&gt;{params.log2fc})</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-500">富集数据库</span>
-                  <span>{params.databases.join(", ")}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-500">输出数量</span>
-                  <span>Top {params.outputCount}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-500">排序依据</span>
-                  <span>{params.sortBy === "comprehensive_score" ? "综合评分" : params.sortBy}</span>
-                </div>
+          {/* ---- 提交中 ---- */}
+          {step === "submitting" && (
+            <div className="py-12 text-center">
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center
+                              justify-center mx-auto mb-6 animate-pulse">
+                <Loader2 className="w-8 h-8 text-primary animate-spin" />
               </div>
+              <h3 className="text-lg font-semibold mb-2">正在提交分析任务...</h3>
+              <p className="text-sm text-gray-500">
+                正在理解你的研究问题，启动分析流水线
+              </p>
+            </div>
+          )}
 
-              <div className="flex justify-between pt-2">
-                <button onClick={() => setStep("params")} className="text-sm text-gray-500 hover:text-gray-700">
-                  ← 返回修改
-                </button>
-                <button onClick={handleStart} className="btn-primary text-sm !py-2.5">
-                  开始分析 <ArrowRight className="w-4 h-4" />
-                </button>
+          {/* ---- 跳转中 ---- */}
+          {step === "redirecting" && (
+            <div className="py-12 text-center">
+              <div className="w-16 h-16 rounded-full bg-emerald-100 flex items-center
+                              justify-center mx-auto mb-6 animate-bounce">
+                <CheckCircle className="w-8 h-8 text-emerald-600" />
               </div>
+              <h3 className="text-lg font-semibold mb-2">任务已创建</h3>
+              <p className="text-sm text-gray-500">
+                正在跳转到分析页面，届时将展示实时进度...
+              </p>
             </div>
           )}
         </div>
+
+        {/* 底部提示 */}
+        {step === "input" && (
+          <div className="px-6 pb-5">
+            <div className="flex items-center justify-center gap-6 text-[10px] text-gray-300">
+              <span className="flex items-center gap-1">
+                <BookOpen className="w-3 h-3" /> 文献检索
+              </span>
+              <span className="flex items-center gap-1">
+                <Dna className="w-3 h-3" /> 生信分析
+              </span>
+              <span className="flex items-center gap-1">
+                <Target className="w-3 h-3" /> 靶点评分
+              </span>
+              <span className="flex items-center gap-1">
+                <FlaskConical className="w-3 h-3" /> 实验方案
+              </span>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )

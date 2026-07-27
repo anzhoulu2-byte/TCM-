@@ -160,8 +160,20 @@ function Navbar({ onStartClick }: { onStartClick: () => void }) {
 
 // ── Hero 区域 ─────────────────────────────────
 
-function Hero({ onStartClick }: { onStartClick: () => void }) {
+function Hero({ onStartClick, onSearchSubmit }: { onStartClick: (q?: string) => void; onSearchSubmit: (q: string) => void }) {
   const [query, setQuery] = useState("")
+
+  const handleSubmit = () => {
+    if (query.trim()) {
+      onSearchSubmit(query.trim())
+    } else {
+      onStartClick()
+    }
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") handleSubmit()
+  }
 
   return (
     <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-24 pb-16">
@@ -205,12 +217,13 @@ function Hero({ onStartClick }: { onStartClick: () => void }) {
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
+                onKeyDown={handleKeyDown}
                 placeholder="输入研究问题，例如：肝癌耐药性的新靶点..."
                 className="w-full bg-transparent border-none outline-none text-foreground
                            placeholder:text-foreground/30 py-2 text-sm"
               />
             </div>
-            <button onClick={onStartClick} className="btn-primary text-sm !py-3 !px-6 shrink-0">
+            <button onClick={handleSubmit} className="btn-primary text-sm !py-3 !px-6 shrink-0">
               开始分析
               <ArrowRight className="w-4 h-4" />
             </button>
@@ -534,21 +547,34 @@ function Footer() {
 
 export default function Home() {
   const [modalOpen, setModalOpen] = useState(false)
+  const [modalQuestion, setModalQuestion] = useState("")
   const heroRef = useRef<HTMLDivElement>(null)
 
   const scrollToHero = () => {
     heroRef.current?.scrollIntoView({ behavior: "smooth" })
   }
 
+  const openModal = (question = "") => {
+    setModalQuestion(question)
+    setModalOpen(true)
+  }
+
   return (
     <main>
-      <StartModal open={modalOpen} onClose={() => setModalOpen(false)} />
+      <StartModal
+        open={modalOpen}
+        onClose={() => { setModalOpen(false); setModalQuestion("") }}
+        initialQuestion={modalQuestion}
+      />
       <Navbar onStartClick={scrollToHero} />
-      <div ref={heroRef}><Hero onStartClick={() => setModalOpen(true)} /></div>
+      <div ref={heroRef}><Hero
+        onStartClick={openModal}
+        onSearchSubmit={(q) => openModal(q)}
+      /></div>
       <FeatureCards />
       <StatsSection />
       <Workflow />
-      <CTA onStartClick={() => setModalOpen(true)} />
+      <CTA onStartClick={() => openModal()} />
       <Footer />
     </main>
   )
